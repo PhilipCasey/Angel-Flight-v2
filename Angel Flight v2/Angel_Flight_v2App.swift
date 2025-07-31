@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Angel_Flight_v2App: App {
+    @StateObject var missionData = Fetcher()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MissionListView()
+                .environmentObject(missionData)
         }
     }
 }

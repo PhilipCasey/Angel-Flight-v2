@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MissionData: Codable, Hashable {
+struct Mission: Codable, Hashable {
     
         var id: String? = nil
         var date: String? = nil
@@ -21,6 +21,21 @@ struct MissionData: Codable, Hashable {
         var patientWeight: String? = nil
         var passengerWeight: String? = nil
         var baggageWeight: String? = nil
+    
+    static let sampleMission = Mission(
+        id: "25-0625-01",
+        date: "July 28, 2025",
+        dayOfWeek: "Monday",
+        departureTime: "8:00 am",
+        departureCity: "Savannah, GA",
+        departureAirport: "SAV",
+        destinationCity: "Atlanta, GA",
+        destinationAirport: "PDK",
+        patientCare: "Transplant-Heart",
+        patientWeight: "230",
+        passengerWeight: "146",
+        baggageWeight: "10"
+    )
 
 }
 

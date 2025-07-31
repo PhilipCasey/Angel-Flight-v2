@@ -8,28 +8,18 @@ import SwiftUI
 
 struct MissionCardView: View {
     @Environment(\.colorScheme) var colorScheme
-    
-    let missionDate: String
-    let missionDayOfWeek: String
-    let missionDepartureTime: String
-    let missionDepartureCity: String
-    let missionDepartureAirport: String
-    let missionDestinationCity: String
-    let missionDestinationAirport: String
-    let missionPatientCare: String
-    let missionPatientWeight: String
-    let missionPassengerWeight: String
-    let missionBaggageWeight: String
+    let mission: Mission
     
     var body: some View {
         VStack {
             HStack {
                 ZStack {
+                    /*
                     VStack {
                         HStack {
                             Spacer()
                             Image(systemName: "globe")
-                            Text("25-0625-01")
+                            Text(missionId)
         
                         }
                         .font(.footnote)
@@ -37,23 +27,23 @@ struct MissionCardView: View {
                         .opacity(0.6)
                         Spacer()
                     }
-                    
+                    */
                     HStack {
                         VStack {
                             VStack {
-                                Text(missionDayOfWeek)
+                                Text(mission.dayOfWeek ?? "loading")
                                     .font(.subheadline)
                                     .foregroundStyle(Color.secondary)
                                 
                             }
                             VStack {
-                                Text(missionDate)
+                                Text(mission.date ?? "loading")
                                     .font(.title2)
                             }
                             VStack {
                                 HStack {
                                     Text("Departing")
-                                    Text(missionDepartureTime)
+                                    Text(mission.departureTime ?? "loading")
                                         .fontWeight(.bold)
                                 }
                                 .font(.footnote)
@@ -67,12 +57,12 @@ struct MissionCardView: View {
             HStack {
                 VStack {
                     HStack {
-                        Text(missionDepartureCity)
+                        Text(mission.departureCity ?? "loading")
                             .font(.callout)
                             .foregroundStyle(Color.secondary)
                     }
                     HStack {
-                        Text(missionDepartureAirport)
+                        Text(mission.departureAirport ?? "loading")
                             .font(.title)
                     }
                 }
@@ -88,12 +78,12 @@ struct MissionCardView: View {
                 Spacer()
                 VStack{
                     HStack {
-                        Text(missionDestinationCity)
+                        Text(mission.destinationCity ?? "loading")
                             .font(.callout)
                             .foregroundStyle(Color.secondary)
                     }
                     HStack{
-                        Text(missionDestinationAirport)
+                        Text(mission.destinationAirport ?? "loading")
                             .font(.title)
                     }
                 }
@@ -110,22 +100,22 @@ struct MissionCardView: View {
                     HStack{
                         Image(systemName: "waveform.path.ecg")
                             .font(.footnote)
-                        Text(missionPatientCare)
+                        Text(mission.patientCare ?? "loading")
                             .font(.headline)
                         Spacer()
                     }
 
                     HStack {
                         Image(systemName: "person.fill")
-                        Text(missionPatientWeight)
+                        Text(mission.patientWeight ?? "loading")
                         
-                        if missionPassengerWeight != "N/A" {
+                        if mission.passengerWeight != "N/A" {
                             Image(systemName: "person.2.fill")
-                            Text(missionPassengerWeight)
+                            Text(mission.passengerWeight ?? "loading")
                         }
                         
                         Image(systemName: "suitcase.fill")
-                        Text(missionBaggageWeight)
+                        Text(mission.baggageWeight ?? "loading")
                         Spacer()
                     }
                     .font(.footnote)
@@ -151,6 +141,8 @@ struct MissionCardView: View {
             }
         }
         .padding(.horizontal, 10)
-        
+        //.frame(minWidth: 350, idealWidth: 380, minHeight: 220, idealHeight: 250, maxHeight: 300)
     }
 }
+
+

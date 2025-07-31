@@ -11,40 +11,31 @@ let gradientColors: [Color] = [.gradientTop, .gradientBottom]
 let accentHighlight: Color = .accentHighlight
 
 struct MissionListView: View {
+    @StateObject var missionData = Fetcher()
     var body: some View {
-    ZStack {
-        VStack(spacing: 12) {
-            MissionCardView(
-                missionId: "234",
-                missionDate: "July 28, 2025",
-                missionDayOfWeek: "Monday",
-                missionDepartureTime: "8:00 am",
-                missionDepartureCity: "Savannah, GA",
-                missionDepartureAirport: "SAV",
-                missionDestinationCity: "Atlanta, GA",
-                missionDestinationAirport: "PDK",
-                missionPatientCare: "Transplant-Heart",
-                missionPatientWeight: "230",
-                missionPassengerWeight: "146",
-                missionBaggageWeight: "10")
-
-            /*
-            Divider()
-                .background(accentHighlight)
-                .padding(.horizontal, 100)
-        
-             */
-            
-
-            
-
+        NavigationView {
+            List {
+                ForEach(missionData.missions, id: \.id){ mission in
+                    MissionCardView(mission: mission)
+                }
             }
-        }
-        .background(Gradient(colors: gradientColors))
-    }
-        
-}
+            .navigationTitle("Missions")
+            .onAppear {
+                missionData.fetcher()
+            }
+            
+            /*
+             Divider()
+             .background(accentHighlight)
+             .padding(.horizontal, 100)
+             
+             */
 
+            .background(Gradient(colors: gradientColors))
+        }
+        
+    }
+}
 
 #Preview {
     MissionListView()
