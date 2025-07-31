@@ -1,0 +1,58 @@
+[
+    {
+        missionId: "25-0625-01",
+        missionDate: "July 28, 2025",
+        missionDayOfWeek: "Monday",
+        missionDepartureTime: "8:00 am",
+        missionDepartureCity: "Savannah, GA",
+        missionDepartureAirport: "SAV",
+        missionDestinationCity: "Atlanta, GA",
+        missionDestinationAirport: "PDK",
+        missionPatientCare: "Transplant-Heart",
+        missionPatientWeight: "230",
+        missionPassengerWeight: "146",
+        missionBaggageWeight: "10"
+    }
+    {
+        missionId: "25-0700-01",
+        missionDate: "July 29, 2025",
+        missionDayOfWeek: "Tuesday",
+        missionDepartureTime: "Anytime",
+        missionDepartureCity: "Newnan, GA",
+        missionDepartureAirport: "CCO",
+        missionDestinationCity: "Memphis, TN",
+        missionDestinationAirport: "M01",
+        missionPatientCare: "Cancer",
+        missionPatientWeight: "130",
+        missionPassengerWeight: "N/A",
+        missionBaggageWeight: "10"
+    }
+    {
+        missionId: "25-0753-01",
+        missionDate: "July 30, 2025",
+        missionDayOfWeek: "Wednesday",
+        missionDepartureTime: "1:30 pm CDT",
+        missionDepartureCity: "Nashville, TN",
+        missionDepartureAirport: "JWN",
+        missionDestinationCity: "Greenville, SC",
+        missionDestinationAirport: "GMU",
+        missionPatientCare: "Transplant-Heart",
+        missionPatientWeight: "230",
+        missionPassengerWeight: "130",
+        missionBaggageWeight: "15"
+    }
+    {
+        missionId: "25-0754-01",
+        missionDate: "July 31, 2025",
+        missionDayOfWeek: "Thursday",
+        missionDepartureTime: "Morning",
+        missionDepartureCity: "Lawrenceville, GA",
+        missionDepartureAirport: "LZU",
+        missionDestinationCity: "Augusta, GA",
+        missionDestinationAirport: "DNL",
+        missionPatientCare: "Burns",
+        missionPatientWeight: "220",
+        missionPassengerWeight: "N/A",
+        missionBaggageWeight: "5"
+    }
+]
