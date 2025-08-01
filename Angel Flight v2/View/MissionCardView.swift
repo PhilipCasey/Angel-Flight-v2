@@ -8,18 +8,19 @@ import SwiftUI
 
 struct MissionCardView: View {
     @Environment(\.colorScheme) var colorScheme
+    //@StateObject var missionData = Fetcher()
     let mission: Mission
     
     var body: some View {
         VStack {
             HStack {
                 ZStack {
-                    /*
+                    
                     VStack {
                         HStack {
                             Spacer()
-                            Image(systemName: "globe")
-                            Text(missionId)
+                            //Image(systemName: "globe")
+                            Text(mission.id ?? "loading")
         
                         }
                         .font(.footnote)
@@ -27,7 +28,7 @@ struct MissionCardView: View {
                         .opacity(0.6)
                         Spacer()
                     }
-                    */
+                    
                     HStack {
                         VStack {
                             VStack {
@@ -54,6 +55,7 @@ struct MissionCardView: View {
                     
                 }
             }
+            
             HStack {
                 VStack {
                     HStack {
@@ -95,6 +97,7 @@ struct MissionCardView: View {
                     .opacity(0.25)
              }
             .padding(.vertical, 8)
+            
             HStack{
                 VStack{
                     HStack{
@@ -122,11 +125,11 @@ struct MissionCardView: View {
                 }
                 Spacer()
                 HStack {
-                    Button("View Mission") {
-                        
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
+                    //Image(systemName: "globe")
+                    //Text(mission.id ?? "loading")
+                    Text("View Mission")
+                        //.font(.capt)
+                    Image(systemName: "chevron.right")
                 }
             }
             .padding(.leading, 8)
@@ -146,3 +149,6 @@ struct MissionCardView: View {
 }
 
 
+#Preview {
+    MissionCardView(mission: Mission.sampleMission)
+}

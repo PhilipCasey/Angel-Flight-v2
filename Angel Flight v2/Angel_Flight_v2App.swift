@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct Angel_Flight_v2App: App {
-    @StateObject var missionData = Fetcher()
+    @StateObject var missionData = Fetcher() //This is what made the #preview start working
     var body: some Scene {
         WindowGroup {
-            MissionListView()
+            MainView()
                 .environmentObject(missionData)
         }
     }
 }
+

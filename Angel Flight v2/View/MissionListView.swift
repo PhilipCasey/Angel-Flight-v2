@@ -13,26 +13,44 @@ let accentHighlight: Color = .accentHighlight
 struct MissionListView: View {
     @StateObject var missionData = Fetcher()
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(missionData.missions, id: \.id){ mission in
-                    MissionCardView(mission: mission)
+        
+        ZStack {
+            NavigationStack {
+                
+                List {
+
+                        ForEach(missionData.missions, id: \.id){ mission in
+                                                            
+                            MissionCardView(mission: mission)
+                                .background(
+                                    NavigationLink(destination: MissionDetailView(mission: mission)) {
+                                        EmptyView()
+                                    }
+                                    .opacity(0)
+                                )
+                    
+                            Divider()
+                            .background(accentHighlight)
+                            .padding(.horizontal, 100)
+                        }
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets()) // Removes default padding
+                        .listRowBackground(Color.clear) // Makes background transparent
+                    
+                
+                }
+                .listStyle(.grouped)
+                .scrollContentBackground(.hidden)
+                .background(Gradient(colors: gradientColors))
+                .navigationTitle("Missions")
+                .onAppear {
+                    missionData.fetcher()
                 }
             }
-            .navigationTitle("Missions")
-            .onAppear {
-                missionData.fetcher()
-            }
-            
-            /*
-             Divider()
-             .background(accentHighlight)
-             .padding(.horizontal, 100)
-             
-             */
 
-            .background(Gradient(colors: gradientColors))
         }
+
+        
         
     }
 }
