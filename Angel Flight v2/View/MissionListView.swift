@@ -12,6 +12,9 @@ let accentHighlight: Color = .accentHighlight
 
 struct MissionListView: View {
     @StateObject var missionData = Fetcher()
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] // NavigationTitle Color
+    }
     var body: some View {
         
         ZStack {
