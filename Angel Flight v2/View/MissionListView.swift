@@ -30,11 +30,14 @@ struct MissionListView: View {
                                         EmptyView()
                                     }
                                     .opacity(0)
+                                    
+                                    
                                 )
                     
                             Divider()
                             .background(accentHighlight)
                             .padding(.horizontal, 100)
+                            
                         }
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets()) // Removes default padding

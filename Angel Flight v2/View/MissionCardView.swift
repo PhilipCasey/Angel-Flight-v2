@@ -55,21 +55,9 @@ struct MissionCardView: View {
                     
                 }
             }
-            
-            HStack {
+            // Route
+            ZStack {
                 VStack {
-                    HStack {
-                        Text(mission.departureCity ?? "loading")
-                            .font(.callout)
-                            .foregroundStyle(Color.secondary)
-                    }
-                    HStack {
-                        Text(mission.departureAirport ?? "loading")
-                            .font(.title)
-                    }
-                }
-                Spacer()
-                VStack{
                     HStack{
                         VStack{
                             Image(systemName: "airplane")
@@ -77,27 +65,45 @@ struct MissionCardView: View {
                         }
                     }
                 }
-                Spacer()
-                VStack{
-                    HStack {
+
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Departure")
+                            .font(.caption)
+                            .foregroundStyle(Color.secondary)
+                        
+                        Text(mission.departureAirport ?? "loading")
+                            .font(.largeTitle)
+                        
+                        Text(mission.departureCity ?? "loading")
+                            .font(.callout)
+                            //.foregroundStyle(Color.secondary)
+                        
+                    }
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text("Destination")
+                            .font(.caption)
+                            .foregroundStyle(Color.secondary)
+                        Text(mission.destinationAirport ?? "loading")
+                            .font(.largeTitle)
                         Text(mission.destinationCity ?? "loading")
                             .font(.callout)
-                            .foregroundStyle(Color.secondary)
-                    }
-                    HStack{
-                        Text(mission.destinationAirport ?? "loading")
-                            .font(.title)
+                            //.foregroundStyle(Color.secondary)
+                        
                     }
                 }
             }
+            //.frame(height: 120)
             .padding(12)
             .background {
-                 RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 12)
                     .foregroundStyle(accentHighlight)
                     .opacity(0.25)
-             }
+            }
             .padding(.vertical, 8)
             
+            //Patient Details
             HStack{
                 VStack{
                     HStack{
@@ -145,6 +151,7 @@ struct MissionCardView: View {
         }
         .padding(.horizontal, 10)
         //.frame(minWidth: 350, idealWidth: 380, minHeight: 220, idealHeight: 250, maxHeight: 300)
+        
     }
 }
 

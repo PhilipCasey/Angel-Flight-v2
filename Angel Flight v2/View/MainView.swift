@@ -20,13 +20,13 @@ struct MainView: View {
                 .tabItem {
                     Label("Accepted", systemImage: "paperplane.fill")
                 }
+                .badge(3)
+            
             Text("Logbook")
                 .tabItem {
                     Label("Logbook", systemImage: "book")
                 }
         }
-       
-        
     }
 }
 

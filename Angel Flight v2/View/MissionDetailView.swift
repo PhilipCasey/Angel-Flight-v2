@@ -14,16 +14,24 @@ struct MissionDetailView: View {
     var body: some View {
         ScrollView{
             VStack {
+                // Mission Details
                 HStack{
                     VStack {
+                        Text("Mission Details")
+                            .font(.headline)
+                            .padding(7)
+                        
+                        Divider()
+                        .background(accentHighlight)
+                        .padding(.horizontal, 75)
+                        .padding(.bottom, 5)
+                        
                         Text(mission.dayOfWeek ?? "loading")
                             .font(.title2)
                             .foregroundStyle(Color.secondary)
                         
-                        
                         Text(mission.date ?? "loading")
                             .font(.title)
-                        
                         
                         HStack {
                             Text("Departing")
@@ -34,45 +42,55 @@ struct MissionDetailView: View {
                 }
                 .padding()
                 
-                VStack {
-                    HStack {
-                        Text("Route")
-                            .font(.headline)
-                    }
-                    HStack {
-                        VStack {
-                            Text(mission.departureCity ?? "loading")
-                                .font(.callout)
-                                .foregroundStyle(Color.secondary)
-                            
-                            Text(mission.departureAirport ?? "loading")
-                                .font(.title)
-                            
-                        }
-                        Spacer()
-                        VStack {
-                            HStack{
-                                VStack{
-                                    Image(systemName: "airplane")
-                                        .font(.title)
-                                }
-                            }
-                        }
-                        Spacer()
-                        VStack{
-                            HStack {
-                                Text(mission.destinationCity ?? "loading")
-                                    .font(.callout)
-                                    .foregroundStyle(Color.secondary)
-                            }
-                            HStack{
-                                Text(mission.destinationAirport ?? "loading")
+                //Route
+                ZStack {
+                    VStack {
+                        HStack{
+                            VStack{
+                                Image(systemName: "airplane")
                                     .font(.title)
                             }
                         }
                     }
+                    
+                    HStack {
+                        VStack{
+                            Text("Route")
+                            .font(.headline)
+                                Spacer()
+                            }
+                        .padding()
+                    }
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Departure")
+                                .font(.caption)
+                                .foregroundStyle(Color.secondary)
+                            
+                            Text(mission.departureAirport ?? "loading")
+                                .font(.largeTitle)
+                            
+                            Text(mission.departureCity ?? "loading")
+                                .font(.callout)
+                                //.foregroundStyle(Color.secondary)
+                            
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text("Destination")
+                                .font(.caption)
+                                .foregroundStyle(Color.secondary)
+                            Text(mission.destinationAirport ?? "loading")
+                                .font(.largeTitle)
+                            Text(mission.destinationCity ?? "loading")
+                                .font(.callout)
+                                //.foregroundStyle(Color.secondary)
+                            
+                        }
+                    }
                 }
-                .padding(12)
+                .frame(height: 120)
+                .padding(.horizontal, 18)
                 .background {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundStyle(accentHighlight)
@@ -80,11 +98,11 @@ struct MissionDetailView: View {
                 }
                 //.padding(.vertical, 8)
                 
-                // PassengerNeed
+                // Passenger Need
                 HStack {
                     VStack{
                         HStack {
-                            Text("Patient Care")
+                            Text("Patient")
                                 .font(.headline)
                         }
                         
@@ -182,6 +200,31 @@ struct MissionDetailView: View {
                     //.padding(.vertical, 8)
                     
                 }
+                
+                //Buttons
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Label("Open Route in EFB", systemImage: "square.and.arrow.up")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                }
+                
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Label("Accept Mission", systemImage: "plus.circle.fill")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                }
+                
+                // Mission ID
                 HStack {
                     HStack {
                         Image(systemName: "globe")
@@ -203,11 +246,10 @@ struct MissionDetailView: View {
             }
             .padding(.horizontal, 10)
 
-            //.frame(minWidth: 350, idealWidth: 380, minHeight: 220, idealHeight: 250, maxHeight: 300)
         }
         .scrollContentBackground(.hidden)
         .background(Gradient(colors: gradientColors))
-        .toolbar(.hidden, for: .tabBar)
+        //.toolbar(.hidden, for: .tabBar)
     }
        
 }
