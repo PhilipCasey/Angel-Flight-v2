@@ -131,11 +131,9 @@ struct MissionCardView: View {
                 }
                 Spacer()
                 HStack {
-                    //Image(systemName: "globe")
-                    //Text(mission.id ?? "loading")
                     Text("View Mission")
-                        //.font(.capt)
                     Image(systemName: "chevron.right")
+                    
                 }
             }
             .padding(.leading, 8)

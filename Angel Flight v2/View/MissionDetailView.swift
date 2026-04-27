@@ -16,15 +16,7 @@ struct MissionDetailView: View {
             VStack {
                 // Mission Details
                 HStack{
-                    VStack {
-                        Text("Mission Details")
-                            .font(.headline)
-                            .padding(7)
-                        
-                        Divider()
-                        .background(accentHighlight)
-                        .padding(.horizontal, 75)
-                        .padding(.bottom, 5)
+                    VStack(spacing: 2) {
                         
                         Text(mission.dayOfWeek ?? "loading")
                             .font(.title2)
@@ -40,7 +32,7 @@ struct MissionDetailView: View {
                         }
                     }
                 }
-                .padding()
+                .padding(.bottom)
                 
                 //Route
                 ZStack {
@@ -244,12 +236,14 @@ struct MissionDetailView: View {
                         .fill(Color.viewBackground)
                 }
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal, 5)
 
         }
-        .scrollContentBackground(.hidden)
-        .background(Gradient(colors: gradientColors))
-        //.toolbar(.hidden, for: .tabBar)
+        .navigationTitle("Mission Details")
+        .navigationBarTitleDisplayMode(.inline)
+        // Adds colored background
+        //.scrollContentBackground(.hidden)
+        //.background(Gradient(colors: gradientColors))
     }
        
 }
