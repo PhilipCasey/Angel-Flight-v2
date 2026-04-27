@@ -2,7 +2,8 @@
 //  Stretchy.swift
 //  Angel Flight v2
 //
-//  Created by Philip Casey on 4/26/26.
+//  Created by Natalia Panferova
+//  https://nilcoalescing.com/blog/StretchyHeaderInSwiftUI/
 //
 
 import SwiftUI
