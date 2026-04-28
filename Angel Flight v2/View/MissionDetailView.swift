@@ -7,13 +7,23 @@
 import SwiftUI
 
 struct MissionDetailView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     //@StateObject var missionData = Fetcher()
     let mission: Mission
     
     var body: some View {
-        ScrollView{
-            VStack {
+        ZStack {
+            if colorScheme == .dark {
+                Rectangle()
+                    .fill(Gradient(colors: gradientColors))
+                    .ignoresSafeArea()
+            } else {
+                Color.white
+                    .ignoresSafeArea()
+            }
+
+            ScrollView{
+                VStack {
                 // Mission Details
                 HStack{
                     VStack(spacing: 2) {
@@ -34,7 +44,7 @@ struct MissionDetailView: View {
                 }
                 .padding(.bottom)
                 
-                //Route
+                //Route Section
                 ZStack {
                     VStack {
                         HStack{
@@ -90,7 +100,7 @@ struct MissionDetailView: View {
                 }
                 //.padding(.vertical, 8)
                 
-                // Passenger Need
+                // Patient Section
                 HStack {
                     VStack{
                         HStack {
@@ -112,7 +122,7 @@ struct MissionDetailView: View {
                             Image(systemName: "birthday.cake")
                                 .font(.title2)
                                 .frame(width: 35, alignment: .trailing)
-                            Text("84 yrs old")
+                            Text("\(mission.patientAge ?? "loading") yrs old")
                             
                             Spacer()
                             
@@ -129,7 +139,7 @@ struct MissionDetailView: View {
                     
                 }
                 
-                // Payload
+                // Payload Section
                 HStack {
                     VStack{
                         HStack {
@@ -177,7 +187,8 @@ struct MissionDetailView: View {
                                 .frame(width: 35, alignment: .trailing)
                             Text("Total Weight")
                             Spacer()
-                            Text("\(mission.baggageWeight ?? "loading") lbs")
+                            Text("\(mission.totalWeightText) lbs")
+                            //Text("\(mission.baggageWeight ?? "loading") lbs")
                         }
                         .fontWeight(.bold)
                         .padding(.top, 4)
@@ -189,7 +200,7 @@ struct MissionDetailView: View {
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
-                    //.padding(.vertical, 8)
+                    .padding(.bottom, 8)
                     
                 }
                 
@@ -229,15 +240,9 @@ struct MissionDetailView: View {
                 
             }
             
-            .padding(14)
-            .background {
-                if colorScheme == .light {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.viewBackground)
-                }
+                .padding(14)
+                .padding(.horizontal, 5)
             }
-            .padding(.horizontal, 5)
-
         }
         .navigationTitle("Mission Details")
         .navigationBarTitleDisplayMode(.inline)

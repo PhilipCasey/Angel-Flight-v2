@@ -8,8 +8,17 @@ import SwiftUI
 
 struct MissionCardView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     //@StateObject var missionData = Fetcher()
     let mission: Mission
+
+    private var shouldShowCondensedWeights: Bool {
+        dynamicTypeSize > .xxLarge
+    }
+
+    private var shouldStackViewMissionLabel: Bool {
+        dynamicTypeSize > .xLarge
+    }
     
     var body: some View {
         VStack {
@@ -115,25 +124,41 @@ struct MissionCardView: View {
                     }
 
                     HStack {
-                        Image(systemName: "person.fill")
-                        Text(mission.patientWeight ?? "loading")
-                        
-                        if mission.passengerWeight != "N/A" {
-                            Image(systemName: "person.2.fill")
-                            Text(mission.passengerWeight ?? "loading")
+                        if shouldShowCondensedWeights {
+                            Image(systemName: "scalemass.fill")
+                            Text("\(mission.totalWeightText) lbs")
+                        } else {
+                            Image(systemName: "person.fill")
+                            Text(mission.patientWeight ?? "loading")
+                            
+                            if mission.passengerWeight != "N/A" {
+                                Image(systemName: "person.2.fill")
+                                Text(mission.passengerWeight ?? "loading")
+                            }
+                            
+                            Image(systemName: "suitcase.fill")
+                            Text(mission.baggageWeight ?? "loading")
                         }
-                        
-                        Image(systemName: "suitcase.fill")
-                        Text(mission.baggageWeight ?? "loading")
                         Spacer()
                     }
                     .font(.footnote)
                 }
                 Spacer()
-                HStack {
-                    Text("View Mission")
-                    Image(systemName: "chevron.right")
-                    
+                Group {
+                    if shouldStackViewMissionLabel {
+                        HStack {
+                            VStack{
+                                Text("View")
+                                Text("Mission")
+                            }
+                            Image(systemName: "chevron.right")
+                        }
+                    } else {
+                        HStack {
+                            Text("View Mission")
+                            Image(systemName: "chevron.right")
+                        }
+                    }
                 }
             }
             .padding(.leading, 8)
@@ -143,6 +168,10 @@ struct MissionCardView: View {
         .padding(14)
         .background {
             if colorScheme == .light {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.viewBackground)
+            }
+            if colorScheme == .dark {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.viewBackground)
             }

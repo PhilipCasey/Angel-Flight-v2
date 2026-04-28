@@ -1,8 +1,7 @@
 import SwiftUI
 class Fetcher: ObservableObject {
     @Published var missions: [Mission] = []
-    let urlString = "https://static.showit.co/file/h5OmVF9J-VMpWscsTRNCIg/84162/missiondata.json"
-   
+    let urlString = "https://raw.githubusercontent.com/PhilipCasey/Angel-Flight-v2/refs/heads/main/Angel%20Flight%20v2/missionData.json"
     
     func fetcher(){
         guard let url = URL(string: urlString) else {
