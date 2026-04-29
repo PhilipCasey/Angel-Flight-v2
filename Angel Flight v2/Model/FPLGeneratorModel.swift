@@ -7,6 +7,25 @@
 
 import Foundation
 
+struct FlightPlanSettings {
+    static let includeHomeAirportKey = "includeHomeAirportInFlightPlan"
+    static let homeAirportCodeKey = "homeAirportCode"
+
+    let includeHomeAirport: Bool
+    let homeAirportCode: String?
+
+    static func load() -> FlightPlanSettings {
+        let defaults = UserDefaults.standard
+        let homeAirportCode = defaults.string(forKey: homeAirportCodeKey)?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return FlightPlanSettings(
+            includeHomeAirport: defaults.bool(forKey: includeHomeAirportKey),
+            homeAirportCode: homeAirportCode?.isEmpty == true ? nil : homeAirportCode?.uppercased()
+        )
+    }
+}
+
 enum FPLGeneratorError: LocalizedError {
     case missingAirportCode(String)
     case airportNotFound(String)
@@ -50,9 +69,22 @@ struct FPLGenerator {
         let airportIndex = try loadAirportIndex()
         let departure = try airport(for: departureCode, using: airportIndex)
         let destination = try airport(for: destinationCode, using: airportIndex)
+        let settings = FlightPlanSettings.load()
 
-        let xml = flightPlanXML(departure: departure, destination: destination)
-        let fileName = "\(departure.exportIdentifier)-\(destination.exportIdentifier).fpl"
+        let routeAirports: [Airport]
+        if settings.includeHomeAirport {
+            guard let homeAirportCode = settings.homeAirportCode else {
+                throw FPLGeneratorError.missingAirportCode("home")
+            }
+
+            let homeAirport = try airport(for: homeAirportCode, using: airportIndex)
+            routeAirports = [homeAirport, departure, destination, homeAirport]
+        } else {
+            routeAirports = [departure, destination]
+        }
+
+        let xml = flightPlanXML(for: routeAirports)
+        let fileName = routeAirports.map(\.exportIdentifier).joined(separator: "-") + ".fpl"
         let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
 
         guard let data = xml.data(using: .utf8) else {
@@ -200,47 +232,62 @@ struct FPLGenerator {
         return values
     }
 
-    private static func flightPlanXML(departure: Airport, destination: Airport) -> String {
-        """
+    private static func flightPlanXML(for routeAirports: [Airport]) -> String {
+        let waypointXML = uniqueAirports(in: routeAirports).map { airport in
+            """
+                <waypoint>
+                    <identifier>\(airport.exportIdentifier)</identifier>
+                    <lat>\(airport.latitude)</lat>
+                    <lon>\(airport.longitude)</lon>
+                    <type>AIRPORT</type>
+                </waypoint>
+            """
+        }
+        .joined(separator: "\n\n")
+
+        let routePointXML = routeAirports.map { airport in
+            """
+                <route-point>
+                    <waypoint-identifier>\(airport.exportIdentifier)</waypoint-identifier>
+                    <waypoint-type>AIRPORT</waypoint-type>
+                </route-point>
+            """
+        }
+        .joined(separator: "\n\n")
+
+        let routeName = routeAirports.map(\.exportIdentifier).joined(separator: " TO ")
+
+        return """
         <?xml version="1.0" encoding="utf-8"?>
         <flight-plan xmlns="http://www8.garmin.com/xmlschemas/FlightPlan/v1">
         <flight-data>
                 <etd-zulu></etd-zulu>
         </flight-data>
         <waypoint-table>
-
-            <waypoint>
-                <identifier>\(departure.exportIdentifier)</identifier>
-                <lat>\(departure.latitude)</lat>
-                <lon>\(departure.longitude)</lon>
-                <type>AIRPORT</type>
-            </waypoint>
-
-            <waypoint>
-                <identifier>\(destination.exportIdentifier)</identifier>
-                <lat>\(destination.latitude)</lat>
-                <lon>\(destination.longitude)</lon>
-                <type>AIRPORT</type>
-            </waypoint>
+        \(waypointXML)
 
         </waypoint-table>
         <route>
-            <route-name>\(departure.exportIdentifier) TO \(destination.exportIdentifier)</route-name>
+            <route-name>\(routeName)</route-name>
             <flight-plan-index>1</flight-plan-index>
-
-            <route-point>
-                <waypoint-identifier>\(departure.exportIdentifier)</waypoint-identifier>
-                <waypoint-type>AIRPORT</waypoint-type>
-            </route-point>
-
-            <route-point>
-                <waypoint-identifier>\(destination.exportIdentifier)</waypoint-identifier>
-                <waypoint-type>AIRPORT</waypoint-type>
-            </route-point>
+        \(routePointXML)
 
         </route>
         </flight-plan>
         """
+    }
+
+    private static func uniqueAirports(in routeAirports: [Airport]) -> [Airport] {
+        var seenIdentifiers = Set<String>()
+        var uniqueAirports: [Airport] = []
+
+        for airport in routeAirports {
+            if seenIdentifiers.insert(airport.exportIdentifier).inserted {
+                uniqueAirports.append(airport)
+            }
+        }
+
+        return uniqueAirports
     }
 }
 
