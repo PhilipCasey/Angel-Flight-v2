@@ -5,11 +5,15 @@
 //  Created by Philip Casey on 7/28/25.
 //
 import SwiftUI
+import UIKit
 
 struct MissionDetailView: View {
     @Environment(\.colorScheme) private var colorScheme
     //@StateObject var missionData = Fetcher()
     let mission: Mission
+    @State private var sharedFile: SharedFile?
+    @State private var errorMessage = ""
+    @State private var isShowingError = false
     
     var body: some View {
         ZStack {
@@ -207,7 +211,7 @@ struct MissionDetailView: View {
                 //Buttons
                 HStack {
                     Button {
-                        
+                        openRouteInEFB()
                     } label: {
                         Label("Open Route in EFB", systemImage: "square.and.arrow.up")
                             .frame(maxWidth: .infinity)
@@ -246,11 +250,39 @@ struct MissionDetailView: View {
         }
         .navigationTitle("Mission Details")
         .navigationBarTitleDisplayMode(.inline)
-        // Adds colored background
-        //.scrollContentBackground(.hidden)
-        //.background(Gradient(colors: gradientColors))
+        .sheet(item: $sharedFile) { sharedFile in
+            ShareSheet(activityItems: [sharedFile.url])
+        }
+        .alert("Unable to Create Flight Plan", isPresented: $isShowingError) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(errorMessage)
+        }
     }
-       
+
+    private func openRouteInEFB() {
+        do {
+            sharedFile = SharedFile(url: try FPLGenerator.generateFile(for: mission))
+        } catch {
+            errorMessage = error.localizedDescription
+            isShowingError = true
+        }
+    }
+}
+
+private struct SharedFile: Identifiable {
+    let id = UUID()
+    let url: URL
+}
+
+private struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
 }
 
 
