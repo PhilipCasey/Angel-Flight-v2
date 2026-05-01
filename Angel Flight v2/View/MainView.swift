@@ -27,9 +27,9 @@ struct MainView: View {
                     .tabItem {
                         Label("Logbook", systemImage: "book")
                     }
-                Text("Pilot")
+                SettingsView()
                     .tabItem {
-                        Label("Profile", systemImage: "person.crop.circle.fill")
+                        Label("Settings", systemImage: "gearshape.fill")
                     }
             }
         }
