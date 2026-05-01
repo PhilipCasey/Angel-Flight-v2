@@ -23,7 +23,7 @@ struct MainView: View {
                     }
                     .badge(3)
                 
-                Text("Logbook")
+                LogbookListView()
                     .tabItem {
                         Label("Logbook", systemImage: "book")
                     }
