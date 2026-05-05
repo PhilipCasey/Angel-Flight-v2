@@ -1,0 +1,20 @@
+[
+    {
+        "id": "25-0625-01",
+        "patientName":"Lorilee Smith",
+        "missiondate": "April 13, 2026",
+        "missionDayOfWeek": "Tuesday",
+        "completionDate": "April 13, 2026",
+        "completionDayOfWeek": "Tuesday",
+        "departureCity": "Lawrenceville, GA",
+        "departureAirport": "LZU",
+        "destinationCity": "Walterboro, SC",
+        "destinationAirport": "RBW",
+        "totalHoursFlown":"4.5",
+        "totalMilesFlown":"416.0",
+        "hourlyOperatingCosts":"118.00"
+        "additionalExpenses":"0.00",
+        "expenseDescription":"n/a",
+        "additionalComments":"n/a"
+    }
+]
