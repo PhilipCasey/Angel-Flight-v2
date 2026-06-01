@@ -1,6 +1,6 @@
 # Angel Flight v2
 
-Angel Flight v2 is a SwiftUI iOS app for browsing Angel Flight mission opportunities, reviewing completed mission logbook entries, and exporting Garmin-compatible flight plan files for electronic flight bag workflows.
+Angel Flight v2 is a redesigned SwiftUI iOS app for browsing [Angel Flight Soars](https://www.angelflightsoars.org) mission opportunities, reviewing completed mission logbook entries, and exporting Garmin-compatible flight plan files for electronic flight bag (ForeFlight & Garmin Pilot) workflows.
 
 ## Features
 
@@ -18,13 +18,13 @@ Screenshots are stored in `Angel Flight v2/Docs/Screenshots/`.
 
 | Old | New |
 | --- | --- |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/before01.jpg" alt="Old app screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app screen 1" width="260"> |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/before02.jpg" alt="Old app screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app screen 2" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/before01.jpg" alt="Old app screen 1" width="360"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app screen 1" width="360"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/before02.jpg" alt="Old app screen 2" width="360"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app screen 2" width="360"> |
 
 | Light | Dark |
 | --- | --- |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app light screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01-dark.jpg" alt="New app dark screen 1" width="260"> |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app light screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-dark.jpg" alt="New app dark screen 2" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app light screen 1" width="360"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01-dark.jpg" alt="New app dark screen 1" width="360"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app light screen 2" width="360"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-dark.jpg" alt="New app dark screen 2" width="360"> |
 
 | Flight Plan Exporter | Share to EFB | Route Loads in EFB
 | --- | --- | --- |
