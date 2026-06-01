@@ -21,14 +21,12 @@ Screenshots are stored in `Angel Flight v2/Docs/Screenshots/`.
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/before01.jpg" alt="Old app screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app screen 1" width="260"> |
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/before02.jpg" alt="Old app screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app screen 2" width="260"> |
 
-### Current App
-
 | Light | Dark |
 | --- | --- |
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app light screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01-dark.jpg" alt="New app dark screen 1" width="260"> |
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app light screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-dark.jpg" alt="New app dark screen 2" width="260"> |
 
-| More Current Screens |
+| Flight Plan Exporter Feature |
 | --- |
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-action.jpg" alt="New app screen 2" width="260"> |
 | <img src="Angel%20Flight%20v2/Docs/Screenshots/new03-action.jpg" alt="New app screen 3" width="260"> |
