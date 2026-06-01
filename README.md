@@ -28,9 +28,7 @@ Screenshots are stored in `Angel Flight v2/Docs/Screenshots/`.
 
 | Flight Plan Exporter | Share to EFB | Route Loads in EFB
 | --- | --- | --- |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-action.jpg" alt="New app screen 2" width="260"> |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/new03-action.jpg" alt="New app screen 3" width="260"> |
-| <img src="Angel%20Flight%20v2/Docs/Screenshots/new04-action.jpg" alt="New app screen 4" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-action.jpg" alt="New app screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new03-action.jpg" alt="New app screen 3" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new04-action.jpg" alt="New app screen 4" width="260"> |
 
 ## Project Structure
 
