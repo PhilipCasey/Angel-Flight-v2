@@ -12,6 +12,28 @@ Angel Flight v2 is a SwiftUI iOS app for browsing Angel Flight mission opportuni
 - Open individual logbook entries with route, flight time, mileage, cost, expense, and notes details.
 - Load mission and logbook JSON from GitHub with bundled JSON fallback data for offline or failed-network cases.
 
+## Screenshots
+
+Screenshots are stored in `Angel Flight v2/Docs/Screenshots/`.
+
+| Old | New |
+| --- | --- |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/before01.jpg" alt="Old app screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app screen 1" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/before02.jpg" alt="Old app screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app screen 2" width="260"> |
+
+### Current App
+
+| Light | Dark |
+| --- | --- |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new01.jpg" alt="New app light screen 1" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new01-dark.jpg" alt="New app dark screen 1" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02.jpg" alt="New app light screen 2" width="260"> | <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-dark.jpg" alt="New app dark screen 2" width="260"> |
+
+| More Current Screens |
+| --- |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new02-action.jpg" alt="New app screen 2" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new03-action.jpg" alt="New app screen 3" width="260"> |
+| <img src="Angel%20Flight%20v2/Docs/Screenshots/new04-action.jpg" alt="New app screen 4" width="260"> |
+
 ## Project Structure
 
 ```text
