@@ -31,8 +31,7 @@ struct MissionListView: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
-            ForEach(missionData.missions, id: \.id){ mission in
-                                                    
+            ForEach(missionData.missions.filter { $0.status == .available}){ mission in
                 MissionCardView(mission: mission)
                     .background(
                         NavigationLink(destination: MissionDetailView(mission: mission)) {

@@ -19,7 +19,7 @@ struct Mission: Identifiable, Codable {
     let expenses: Expenses?
     let comments: String?
     
-    var totalWeightText: String {
+    var totalWeight: String {
         let weights = [
             patient.weight,
             passenger.weight,
@@ -36,6 +36,7 @@ struct Mission: Identifiable, Codable {
         return String(Int(totalWeight))
     }
     
+    // Sample Mission Data for Available Missions
     static let sampleMissionAvailable = Mission(
         id: "25-0625-01",
         status: .available,
@@ -69,6 +70,47 @@ struct Mission: Identifiable, Codable {
             weight: 25
         ),
         flightTotals: nil,
+        expenses: nil,
+        comments: nil
+    )
+    
+    // Sample Mission Data for Completed Missions
+    static let sampleMissionCompleted = Mission(
+        id: "23-0501-01",
+        status: .completed,
+        patient: Patient.init(
+            name: "Lori Smith",
+            care: nil,
+            age: nil,
+            weight: nil,
+        ),
+        mission: MissionInfo.init(
+            date: "April 18, 2023",
+            dayOfWeek: "Tuesday",
+            departureTime: nil,
+            completedDate: "April 18, 2023",
+            completedDayOfWeek: "Tuesday"
+        ),
+        route: Route.init(
+            departure: AirportLocation.init(
+                city: "Lawrenceville",
+                state: "GA",
+                airport: "PDK"),
+            destination: AirportLocation.init(
+                city: "Walterboro",
+                state: "SC",
+                airport: "RBW")
+        ),
+        passenger: Passenger.init(
+            weight: nil,
+        ),
+        baggage: Baggage.init(
+            weight: nil
+        ),
+        flightTotals: FlightTotals.init(
+            hoursFlown: 4.5,
+            milesFlown: 416
+        ),
         expenses: nil,
         comments: nil
     )
@@ -124,23 +166,6 @@ struct Expenses: Codable {
     let description: String?
 }
 
-    /*
-    static let sampleMission = Mission (
-        id: "25-0625-01",
-        date: "July 28, 2025",
-        dayOfWeek: "Monday",
-        departureTime: "8:00 am",
-        departureCity: "Savannah, GA",
-        departureAirport: "SAV",
-        destinationCity: "Atlanta, GA",
-        destinationAirport: "PDK",
-        patientCare: "Transplant-Heart",
-        patientAge: "85",
-        patientWeight: "230",
-        passengerWeight: "146",
-        baggageWeight: "10"
-    )
-*/
 
 
 

@@ -58,11 +58,11 @@ struct FPLGenerator {
     }
 
     static func generateFile(for mission: Mission) throws -> URL {
-        guard let departureCode = normalizedCode(from: mission.departureAirport) else {
+        guard let departureCode = normalizedCode(from: mission.route.departure.airport) else {
             throw FPLGeneratorError.missingAirportCode("departure")
         }
 
-        guard let destinationCode = normalizedCode(from: mission.destinationAirport) else {
+        guard let destinationCode = normalizedCode(from: mission.route.destination.airport) else {
             throw FPLGeneratorError.missingAirportCode("destination")
         }
 

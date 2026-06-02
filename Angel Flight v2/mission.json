@@ -19,12 +19,12 @@
       "departure": {
         "city": "Lawrenceville",
         "state": "GA",
-        "airport": "KLZU"
+        "airport": "LZU"
       },
       "destination": {
         "city": "Walterboro",
         "state": "SC",
-        "airport": "KRBW"
+        "airport": "RBW"
       }
     },
     "passenger": {
@@ -64,12 +64,12 @@
       "departure": {
         "city": "Newnan",
         "state": "GA",
-        "airport": "KCCO"
+        "airport": "CCO"
       },
       "destination": {
         "city": "Walterboro",
         "state": "SC",
-        "airport": "KRBW"
+        "airport": "RBW"
       }
     },
     "passenger": {
@@ -109,12 +109,12 @@
       "departure": {
         "city": "Newnan",
         "state": "GA",
-        "airport": "KCCO"
+        "airport": "CCO"
       },
       "destination": {
         "city": "Walterboro",
         "state": "SC",
-        "airport": "KRBW"
+        "airport": "RBW"
       }
     },
     "passenger": {
@@ -154,12 +154,12 @@
       "departure": {
         "city": "Newnan",
         "state": "GA",
-        "airport": "KCCO"
+        "airport": "CCO"
       },
       "destination": {
         "city": "Walterboro",
         "state": "SC",
-        "airport": "KRBW"
+        "airport": "RBW"
       }
     },
     "passenger": {
@@ -199,12 +199,12 @@
       "departure": {
         "city": "Savannah",
         "state": "GA",
-        "airport": "KSAV"
+        "airport": "SAV"
       },
       "destination": {
         "city": "Atlanta",
         "state": "GA",
-        "airport": "KPDK"
+        "airport": "PDK"
       }
     },
     "passenger": {
@@ -237,7 +237,7 @@
       "departure": {
         "city": "Newnan",
         "state": "GA",
-        "airport": "KCCO"
+        "airport": "CCO"
       },
       "destination": {
         "city": "Memphis",
@@ -275,12 +275,12 @@
       "departure": {
         "city": "Nashville",
         "state": "TN",
-        "airport": "KJWN"
+        "airport": "JWN"
       },
       "destination": {
         "city": "Greenville",
         "state": "SC",
-        "airport": "KGMU"
+        "airport": "GMU"
       }
     },
     "passenger": {
@@ -313,12 +313,12 @@
       "departure": {
         "city": "Lawrenceville",
         "state": "GA",
-        "airport": "KLZU"
+        "airport": "LZU"
       },
       "destination": {
         "city": "Augusta",
         "state": "GA",
-        "airport": "KDNL"
+        "airport": "DNL"
       }
     },
     "passenger": {
@@ -351,12 +351,12 @@
       "departure": {
         "city": "Morristown",
         "state": "TN",
-        "airport": "KMOR"
+        "airport": "MOR"
       },
       "destination": {
         "city": "Tuscaloosa",
         "state": "AL",
-        "airport": "KTCL"
+        "airport": "TCL"
       }
     },
     "passenger": {
