@@ -1,0 +1,372 @@
+[
+  {
+    "id": "25-0625-01",
+    "status": "completed",
+    "patient": {
+      "name": "Lori Smith",
+      "care": null,
+      "age": null,
+      "weight": null
+    },
+    "mission": {
+      "date": "2026-04-13",
+      "dayOfWeek": "Monday",
+      "departureTime": null,
+      "completedDate": "2026-04-13",
+      "completedDayOfWeek": "Monday"
+    },
+    "route": {
+      "departure": {
+        "city": "Lawrenceville",
+        "state": "GA",
+        "airport": "KLZU"
+      },
+      "destination": {
+        "city": "Walterboro",
+        "state": "SC",
+        "airport": "KRBW"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": null
+    },
+    "flightTotals": {
+      "hoursFlown": 4.5,
+      "milesFlown": 416.0
+    },
+    "expenses": {
+      "hourlyOperatingCost": 118.0,
+      "additionalExpenses": 0.0,
+      "description": null
+    },
+    "comments": null
+  },
+  {
+    "id": "23-0490-01",
+    "status": "completed",
+    "patient": {
+      "name": "Lori Smith",
+      "care": null,
+      "age": null,
+      "weight": null
+    },
+    "mission": {
+      "date": "2025-04-29",
+      "dayOfWeek": "Tuesday",
+      "departureTime": null,
+      "completedDate": "2025-04-29",
+      "completedDayOfWeek": "Tuesday"
+    },
+    "route": {
+      "departure": {
+        "city": "Newnan",
+        "state": "GA",
+        "airport": "KCCO"
+      },
+      "destination": {
+        "city": "Walterboro",
+        "state": "SC",
+        "airport": "KRBW"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": null
+    },
+    "flightTotals": {
+      "hoursFlown": 5.0,
+      "milesFlown": 497.0
+    },
+    "expenses": {
+      "hourlyOperatingCost": 118.0,
+      "additionalExpenses": 0.0,
+      "description": null
+    },
+    "comments": null
+  },
+  {
+    "id": "23-0330-01",
+    "status": "completed",
+    "patient": {
+      "name": "Lori Smith",
+      "care": null,
+      "age": null,
+      "weight": null
+    },
+    "mission": {
+      "date": "2023-03-28",
+      "dayOfWeek": "Tuesday",
+      "departureTime": null,
+      "completedDate": "2023-03-28",
+      "completedDayOfWeek": "Tuesday"
+    },
+    "route": {
+      "departure": {
+        "city": "Newnan",
+        "state": "GA",
+        "airport": "KCCO"
+      },
+      "destination": {
+        "city": "Walterboro",
+        "state": "SC",
+        "airport": "KRBW"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": null
+    },
+    "flightTotals": {
+      "hoursFlown": 1.9,
+      "milesFlown": 100.0
+    },
+    "expenses": {
+      "hourlyOperatingCost": 118.0,
+      "additionalExpenses": 0.0,
+      "description": null
+    },
+    "comments": null
+  },
+  {
+    "id": "23-0328-01",
+    "status": "completed",
+    "patient": {
+      "name": "Lori Smith",
+      "care": null,
+      "age": null,
+      "weight": null
+    },
+    "mission": {
+      "date": "2023-03-15",
+      "dayOfWeek": "Wednesday",
+      "departureTime": null,
+      "completedDate": "2023-03-15",
+      "completedDayOfWeek": "Wednesday"
+    },
+    "route": {
+      "departure": {
+        "city": "Newnan",
+        "state": "GA",
+        "airport": "KCCO"
+      },
+      "destination": {
+        "city": "Walterboro",
+        "state": "SC",
+        "airport": "KRBW"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": null
+    },
+    "flightTotals": {
+      "hoursFlown": 4.8,
+      "milesFlown": 493.0
+    },
+    "expenses": {
+      "hourlyOperatingCost": 118.0,
+      "additionalExpenses": 0.0,
+      "description": null
+    },
+    "comments": null
+  },
+  {
+    "id": "25-0625-02",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Transplant-Heart",
+      "age": 44,
+      "weight": 230.0
+    },
+    "mission": {
+      "date": "2025-07-28",
+      "dayOfWeek": "Monday",
+      "departureTime": "8:00 am",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Savannah",
+        "state": "GA",
+        "airport": "KSAV"
+      },
+      "destination": {
+        "city": "Atlanta",
+        "state": "GA",
+        "airport": "KPDK"
+      }
+    },
+    "passenger": {
+      "weight": 146.0
+    },
+    "baggage": {
+      "weight": 10.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  },
+  {
+    "id": "25-0700-01",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Cancer",
+      "age": 85,
+      "weight": 130.0
+    },
+    "mission": {
+      "date": "2025-07-29",
+      "dayOfWeek": "Tuesday",
+      "departureTime": "Anytime",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Newnan",
+        "state": "GA",
+        "airport": "KCCO"
+      },
+      "destination": {
+        "city": "Memphis",
+        "state": "TN",
+        "airport": "M01"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": 10.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  },
+  {
+    "id": "25-0753-01",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Transplant-Heart",
+      "age": 42,
+      "weight": 230.0
+    },
+    "mission": {
+      "date": "2025-07-30",
+      "dayOfWeek": "Wednesday",
+      "departureTime": "1:30 pm CDT",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Nashville",
+        "state": "TN",
+        "airport": "KJWN"
+      },
+      "destination": {
+        "city": "Greenville",
+        "state": "SC",
+        "airport": "KGMU"
+      }
+    },
+    "passenger": {
+      "weight": 130.0
+    },
+    "baggage": {
+      "weight": 15.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  },
+  {
+    "id": "25-0754-01",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Burns",
+      "age": 74,
+      "weight": 220.0
+    },
+    "mission": {
+      "date": "2025-07-31",
+      "dayOfWeek": "Thursday",
+      "departureTime": "Morning",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Lawrenceville",
+        "state": "GA",
+        "airport": "KLZU"
+      },
+      "destination": {
+        "city": "Augusta",
+        "state": "GA",
+        "airport": "KDNL"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": 5.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  },
+  {
+    "id": "26-0334-01",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Adrenal Hyperplasia",
+      "age": 15,
+      "weight": 112.0
+    },
+    "mission": {
+      "date": "2026-05-17",
+      "dayOfWeek": "Sunday",
+      "departureTime": "Morning",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Morristown",
+        "state": "TN",
+        "airport": "KMOR"
+      },
+      "destination": {
+        "city": "Tuscaloosa",
+        "state": "AL",
+        "airport": "KTCL"
+      }
+    },
+    "passenger": {
+      "weight": null
+    },
+    "baggage": {
+      "weight": 20.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  }
+]
