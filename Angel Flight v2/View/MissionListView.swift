@@ -22,7 +22,7 @@ struct MissionListView: View {
             Image("logo")
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: 90)
+                .frame(maxWidth: 75)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 36)
                 .padding(.bottom, 7)
@@ -31,7 +31,7 @@ struct MissionListView: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
-            ForEach(missionData.missions.filter { $0.status == .available}){ mission in
+            ForEach(missionData.missions.filter { $0.status == .available }) { mission in
                 MissionCardView(mission: mission)
                     .background(
                         NavigationLink(destination: MissionDetailView(mission: mission)) {

@@ -9,7 +9,7 @@
       "weight": null
     },
     "mission": {
-      "date": "2026-04-13",
+      "date": "04-13-2026",
       "dayOfWeek": "Monday",
       "departureTime": null,
       "completedDate": "2026-04-13",
@@ -54,7 +54,7 @@
       "weight": null
     },
     "mission": {
-      "date": "2025-04-29",
+      "date": "04-29-2025",
       "dayOfWeek": "Tuesday",
       "departureTime": null,
       "completedDate": "2025-04-29",
@@ -99,7 +99,7 @@
       "weight": null
     },
     "mission": {
-      "date": "2023-03-28",
+      "date": "03-28-2023",
       "dayOfWeek": "Tuesday",
       "departureTime": null,
       "completedDate": "2023-03-28",
@@ -144,7 +144,7 @@
       "weight": null
     },
     "mission": {
-      "date": "2023-03-15",
+      "date": "03-15-2023",
       "dayOfWeek": "Wednesday",
       "departureTime": null,
       "completedDate": "2023-03-15",
@@ -189,7 +189,7 @@
       "weight": 230.0
     },
     "mission": {
-      "date": "2025-07-28",
+      "date": "07-28-2025",
       "dayOfWeek": "Monday",
       "departureTime": "8:00 am",
       "completedDate": null,
@@ -227,7 +227,7 @@
       "weight": 130.0
     },
     "mission": {
-      "date": "2025-07-29",
+      "date": "07-29-2025",
       "dayOfWeek": "Tuesday",
       "departureTime": "Anytime",
       "completedDate": null,
@@ -265,7 +265,7 @@
       "weight": 230.0
     },
     "mission": {
-      "date": "2025-07-30",
+      "date": "07-30-2025",
       "dayOfWeek": "Wednesday",
       "departureTime": "1:30 pm CDT",
       "completedDate": null,
@@ -303,7 +303,7 @@
       "weight": 220.0
     },
     "mission": {
-      "date": "2025-07-31",
+      "date": "07-31-2025",
       "dayOfWeek": "Thursday",
       "departureTime": "Morning",
       "completedDate": null,
@@ -341,7 +341,7 @@
       "weight": 112.0
     },
     "mission": {
-      "date": "2026-05-17",
+      "date": "05-17-2026",
       "dayOfWeek": "Sunday",
       "departureTime": "Morning",
       "completedDate": null,

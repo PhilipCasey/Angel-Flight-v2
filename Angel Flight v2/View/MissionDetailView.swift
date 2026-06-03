@@ -98,7 +98,7 @@ struct MissionDetailView: View {
                 .frame(height: 120)
                 .padding(.horizontal, 18)
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: 14)
                         .foregroundStyle(accentHighlight)
                         .opacity(0.25)
                 }
@@ -114,7 +114,7 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "waveform.path.ecg")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text(mission.patient.care ?? "loading")
                             
@@ -124,7 +124,7 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "birthday.cake")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) years old" : "loading")
                             
@@ -135,7 +135,7 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 14)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
@@ -153,7 +153,7 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "person.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Patient")
                             Spacer()
@@ -164,7 +164,7 @@ struct MissionDetailView: View {
                         if mission.passenger.weight != nil {
                             HStack {
                                 Image(systemName: "person.2.fill")
-                                    .font(.title2)
+                                    .font(.title3)
                                     .frame(width: 35, alignment: .trailing)
                                 Text("Passenger")
                                 Spacer()
@@ -174,7 +174,7 @@ struct MissionDetailView: View {
                         
                         HStack{
                             Image(systemName: "suitcase.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Baggage")
                             Spacer()
@@ -187,11 +187,11 @@ struct MissionDetailView: View {
                         
                         HStack{
                             Image(systemName: "scalemass.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Total Weight")
                             Spacer()
-                            Text("\(mission.totalWeight ?? "loading") lbs")
+                            Text("\(mission.totalWeight) lbs")
                         }
                         .fontWeight(.bold)
                         .padding(.top, 4)
@@ -199,7 +199,7 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 14)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
@@ -234,7 +234,7 @@ struct MissionDetailView: View {
                 HStack {
                     HStack {
                         Image(systemName: "globe")
-                        Text(mission.id ?? "loading")
+                        Text(mission.id)
                     }
                     .foregroundStyle(Color.secondary)
                 }

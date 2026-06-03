@@ -47,7 +47,7 @@ struct Mission: Identifiable, Codable {
             weight: 230,
         ),
         mission: MissionInfo.init(
-            date: "July 28, 2025",
+            date: "07-28-2025",
             dayOfWeek: "Monday",
             departureTime: "8:00 am",
             completedDate: nil,
@@ -85,10 +85,10 @@ struct Mission: Identifiable, Codable {
             weight: nil,
         ),
         mission: MissionInfo.init(
-            date: "April 18, 2023",
+            date: "04-18-2023",
             dayOfWeek: "Tuesday",
             departureTime: nil,
-            completedDate: "April 18, 2023",
+            completedDate: "04-18-2023",
             completedDayOfWeek: "Tuesday"
         ),
         route: Route.init(

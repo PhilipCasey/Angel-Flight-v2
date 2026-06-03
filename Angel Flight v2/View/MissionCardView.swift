@@ -82,20 +82,21 @@ struct MissionCardView: View {
                             .foregroundStyle(Color.secondary)
                         
                         Text(mission.route.departure.airport)
-                            .font(.largeTitle)
+                            .font(.title)
                         
                         Text("\(mission.route.departure.city), \(mission.route.departure.state)")
                             .font(.callout)
                             //.foregroundStyle(Color.secondary)
                         
                     }
+                    
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text("Destination")
                             .font(.caption)
                             .foregroundStyle(Color.secondary)
                         Text(mission.route.destination.airport)
-                            .font(.largeTitle)
+                            .font(.title)
                         Text("\(mission.route.destination.city), \(mission.route.destination.state)")
                             .font(.callout)
                             //.foregroundStyle(Color.secondary)
@@ -104,9 +105,9 @@ struct MissionCardView: View {
                 }
             }
             //.frame(height: 120)
-            .padding(12)
+            .padding(13)
             .background {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 14)
                     .foregroundStyle(accentHighlight)
                     .opacity(0.25)
             }
@@ -125,37 +126,37 @@ struct MissionCardView: View {
 
                     HStack {
                         if shouldShowCondensedWeights {
-                            Image(systemName: "scalemass.fill")
-                            Text("\(mission.totalWeight) lbs")
-                        } else {
-                            Image(systemName: "person.fill")
-                            Text(mission.patient.weight != nil ? "\(Int(mission.patient.weight!)) lbs" : "loading")
+                            Image(systemName: "birthday.cake")
+                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) yrs old" : "loading")
                             
+                        } else {
+                            Image(systemName: "birthday.cake")
+                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) yrs old" : "loading")
                             if mission.passenger.weight != nil {
                                 Image(systemName: "person.2.fill")
-                                Text(mission.passenger.weight != nil ? "\(Int(mission.passenger.weight!)) lbs" : "loading")
+                                Text("Patient + Passenger")
+                            } else {
+                                Image(systemName: "person.fill")
+                                Text("Patient only")
                             }
-                            
-                            Image(systemName: "suitcase.fill")
-                            Text(mission.baggage.weight != nil ? "\(Int(mission.baggage.weight!)) lbs" : "loading")
                         }
                         Spacer()
                     }
-                    .font(.footnote)
+                    .font(.subheadline)
                 }
                 Spacer()
                 Group {
                     if shouldStackViewMissionLabel {
                         HStack {
                             VStack{
-                                Text("View")
-                                Text("Mission")
+                                //Text("View")
+                                //Text("Mission")
                             }
                             Image(systemName: "chevron.right")
                         }
                     } else {
                         HStack {
-                            Text("View Mission")
+                            //Text("View Mission")
                             Image(systemName: "chevron.right")
                         }
                     }
