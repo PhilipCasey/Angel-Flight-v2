@@ -13,11 +13,12 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                MissionListView()
+                MissionListViewAvailable()
                     .tabItem() {
                         Label("Missions", systemImage: "globe")
                     }
-                Text("Accepted Missions")
+                    .tag(0)
+                MissionListViewAccepted()
                     .tabItem {
                         Label("Accepted", systemImage: "paperplane.fill")
                     }

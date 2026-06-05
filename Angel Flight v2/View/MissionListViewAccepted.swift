@@ -1,16 +1,15 @@
+
 //
-//  ContentView.swift
+//  MissionListViewAvailable 2.swift
 //  Angel Flight v2
 //
-//  Created by Philip Casey on 7/26/25.
+//  Created by Philip Casey on 6/4/26.
 //
+
 
 import SwiftUI
 
-let gradientColors: [Color] = [.gradientTop, .gradientBottom]
-let accentHighlight: Color = .accentHighlight
-
-struct MissionListView: View {
+struct MissionListViewAccepted: View {
     @StateObject var missionData = Fetcher()
 
     init() {
@@ -31,21 +30,12 @@ struct MissionListView: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
-            ForEach(missionData.missions.filter { $0.status == .available }) { mission in
-                MissionCardView(mission: mission)
-                    .background(
-                        NavigationLink(destination: MissionDetailView(mission: mission)) {
-                            EmptyView()
-                        }
-                        .opacity(0)
-                    )
-                    .padding(8)
-
-            }
-            .listRowSeparator(.hidden)
-            .listRowInsets(EdgeInsets()) // Removes default padding
-            .listRowBackground(Color.clear) // Makes background transparent
-
+            //listView(MissionStatus: .accepted) // Builds the list cardview
+            FilteredListCardView(
+                missions: missionData.missions,
+                status: .accepted
+            )
+            
             Text("Thank you for serving!")
                 .foregroundStyle(.white.opacity(0.8))
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -64,5 +54,5 @@ struct MissionListView: View {
 }
 
 #Preview {
-    MissionListView()
+    MissionListViewAccepted()
 }

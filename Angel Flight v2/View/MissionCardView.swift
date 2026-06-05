@@ -137,7 +137,7 @@ struct MissionCardView: View {
                                 Text("Patient + Passenger")
                             } else {
                                 Image(systemName: "person.fill")
-                                Text("Patient only")
+                                Text("Patient")
                             }
                         }
                         Spacer()
