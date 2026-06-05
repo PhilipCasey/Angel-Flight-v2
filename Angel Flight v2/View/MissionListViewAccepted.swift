@@ -30,7 +30,7 @@ struct MissionListViewAccepted: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
-            //listView(MissionStatus: .accepted) // Builds the list cardview
+            // Builds the list cardview
             FilteredListCardView(
                 missions: missionData.missions,
                 status: .accepted
