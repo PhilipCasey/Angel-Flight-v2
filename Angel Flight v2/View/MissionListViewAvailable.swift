@@ -10,7 +10,7 @@ import SwiftUI
 let gradientColors: [Color] = [.gradientTop, .gradientBottom]
 let accentHighlight: Color = .accentHighlight
 
-struct MissionListView: View {
+struct MissionListViewAvailable: View {
     @StateObject var missionData = Fetcher()
 
     init() {
@@ -22,7 +22,7 @@ struct MissionListView: View {
             Image("logo")
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: 90)
+                .frame(maxWidth: 75)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 36)
                 .padding(.bottom, 7)
@@ -31,22 +31,12 @@ struct MissionListView: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
-            ForEach(missionData.missions, id: \.id){ mission in
-                                                    
-                MissionCardView(mission: mission)
-                    .background(
-                        NavigationLink(destination: MissionDetailView(mission: mission)) {
-                            EmptyView()
-                        }
-                        .opacity(0)
-                    )
-                    .padding(8)
-
-            }
-            .listRowSeparator(.hidden)
-            .listRowInsets(EdgeInsets()) // Removes default padding
-            .listRowBackground(Color.clear) // Makes background transparent
-
+            // Builds the list cardview
+            FilteredListCardView(
+                missions: missionData.missions,
+                status: .available
+            )
+            
             Text("Thank you for serving!")
                 .foregroundStyle(.white.opacity(0.8))
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -65,5 +55,5 @@ struct MissionListView: View {
 }
 
 #Preview {
-    MissionListView()
+    MissionListViewAvailable()
 }

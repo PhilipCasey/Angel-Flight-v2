@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
-
+/*
+ let completedMissions = missions.filter { $0.status == .completed }
+ let availableMissions = missions.filter { $0.status == .available }
+ */
 struct LogbookDetailView: View {
     @Environment(\.colorScheme) private var colorScheme
 

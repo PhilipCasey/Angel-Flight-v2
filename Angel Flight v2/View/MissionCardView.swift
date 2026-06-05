@@ -29,7 +29,7 @@ struct MissionCardView: View {
                         HStack {
                             Spacer()
                             //Image(systemName: "globe")
-                            Text(mission.id ?? "loading")
+                            Text(mission.id)
         
                         }
                         .font(.footnote)
@@ -41,19 +41,19 @@ struct MissionCardView: View {
                     HStack {
                         VStack {
                             VStack {
-                                Text(mission.dayOfWeek ?? "loading")
+                                Text(mission.mission.dayOfWeek)
                                     .font(.subheadline)
                                     .foregroundStyle(Color.secondary)
                                 
                             }
                             VStack {
-                                Text(mission.date ?? "loading")
+                                Text(mission.mission.date)
                                     .font(.title2)
                             }
                             VStack {
                                 HStack {
                                     Text("Departing")
-                                    Text(mission.departureTime ?? "loading")
+                                    Text(mission.mission.departureTime ?? "loading")
                                         .fontWeight(.bold)
                                 }
                                 .font(.footnote)
@@ -81,22 +81,23 @@ struct MissionCardView: View {
                             .font(.caption)
                             .foregroundStyle(Color.secondary)
                         
-                        Text(mission.departureAirport ?? "loading")
-                            .font(.largeTitle)
+                        Text(mission.route.departure.airport)
+                            .font(.title)
                         
-                        Text(mission.departureCity ?? "loading")
+                        Text("\(mission.route.departure.city), \(mission.route.departure.state)")
                             .font(.callout)
                             //.foregroundStyle(Color.secondary)
                         
                     }
+                    
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text("Destination")
                             .font(.caption)
                             .foregroundStyle(Color.secondary)
-                        Text(mission.destinationAirport ?? "loading")
-                            .font(.largeTitle)
-                        Text(mission.destinationCity ?? "loading")
+                        Text(mission.route.destination.airport)
+                            .font(.title)
+                        Text("\(mission.route.destination.city), \(mission.route.destination.state)")
                             .font(.callout)
                             //.foregroundStyle(Color.secondary)
                         
@@ -104,9 +105,9 @@ struct MissionCardView: View {
                 }
             }
             //.frame(height: 120)
-            .padding(12)
+            .padding(13)
             .background {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 14)
                     .foregroundStyle(accentHighlight)
                     .opacity(0.25)
             }
@@ -118,44 +119,44 @@ struct MissionCardView: View {
                     HStack{
                         Image(systemName: "waveform.path.ecg")
                             .font(.footnote)
-                        Text(mission.patientCare ?? "loading")
+                        Text(mission.patient.care ?? "loading")
                             .font(.headline)
                         Spacer()
                     }
 
                     HStack {
                         if shouldShowCondensedWeights {
-                            Image(systemName: "scalemass.fill")
-                            Text("\(mission.totalWeightText) lbs")
+                            Image(systemName: "birthday.cake")
+                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) yrs old" : "loading")
+                            
                         } else {
-                            Image(systemName: "person.fill")
-                            Text(mission.patientWeight ?? "loading")
-                            
-                            if mission.passengerWeight != "N/A" {
+                            Image(systemName: "birthday.cake")
+                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) yrs old" : "loading")
+                            if mission.passenger.weight != nil {
                                 Image(systemName: "person.2.fill")
-                                Text(mission.passengerWeight ?? "loading")
+                                Text("Patient + Passenger")
+                            } else {
+                                Image(systemName: "person.fill")
+                                Text("Patient")
                             }
-                            
-                            Image(systemName: "suitcase.fill")
-                            Text(mission.baggageWeight ?? "loading")
                         }
                         Spacer()
                     }
-                    .font(.footnote)
+                    .font(.subheadline)
                 }
                 Spacer()
                 Group {
                     if shouldStackViewMissionLabel {
                         HStack {
                             VStack{
-                                Text("View")
-                                Text("Mission")
+                                //Text("View")
+                                //Text("Mission")
                             }
                             Image(systemName: "chevron.right")
                         }
                     } else {
                         HStack {
-                            Text("View Mission")
+                            //Text("View Mission")
                             Image(systemName: "chevron.right")
                         }
                     }
@@ -184,5 +185,5 @@ struct MissionCardView: View {
 
 
 #Preview {
-    MissionCardView(mission: Mission.sampleMission)
+    MissionCardView(mission: Mission.sampleMissionAvailable)
 }

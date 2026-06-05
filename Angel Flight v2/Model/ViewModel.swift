@@ -4,7 +4,7 @@ class Fetcher: ObservableObject {
     @Published var missions: [Mission] = []
     @Published var logbookEntries: [LogbookEntry] = []
 
-    private let missionURLString = "https://raw.githubusercontent.com/PhilipCasey/Angel-Flight-v2/refs/heads/main/Angel%20Flight%20v2/missionData.json"
+    private let missionURLString = "https://raw.githubusercontent.com/PhilipCasey/Angel-Flight-v2/refs/heads/main/Angel%20Flight%20v2/mission.json"
     private let missionLogURLString = "https://raw.githubusercontent.com/PhilipCasey/Angel-Flight-v2/refs/heads/main/Angel%20Flight%20v2/missionLog.json"
 
     func fetcher() {

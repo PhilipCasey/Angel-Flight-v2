@@ -5,7 +5,6 @@
 //  Created by Philip Casey on 7/28/25.
 //
 import SwiftUI
-import UIKit
 
 struct MissionDetailView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -32,16 +31,16 @@ struct MissionDetailView: View {
                 HStack{
                     VStack(spacing: 2) {
                         
-                        Text(mission.dayOfWeek ?? "loading")
+                        Text(mission.mission.dayOfWeek)
                             .font(.title2)
                             .foregroundStyle(Color.secondary)
                         
-                        Text(mission.date ?? "loading")
+                        Text(mission.mission.date)
                             .font(.title)
                         
                         HStack {
                             Text("Departing")
-                            Text(mission.departureTime ?? "loading")
+                            Text(mission.mission.departureTime ?? "loading")
                                 .fontWeight(.bold)
                         }
                     }
@@ -73,10 +72,10 @@ struct MissionDetailView: View {
                                 .font(.caption)
                                 .foregroundStyle(Color.secondary)
                             
-                            Text(mission.departureAirport ?? "loading")
+                            Text(mission.route.departure.airport)
                                 .font(.largeTitle)
                             
-                            Text(mission.departureCity ?? "loading")
+                            Text("\(mission.route.departure.city), \(mission.route.departure.state)")
                                 .font(.callout)
                                 //.foregroundStyle(Color.secondary)
                             
@@ -86,9 +85,9 @@ struct MissionDetailView: View {
                             Text("Destination")
                                 .font(.caption)
                                 .foregroundStyle(Color.secondary)
-                            Text(mission.destinationAirport ?? "loading")
+                            Text(mission.route.destination.airport)
                                 .font(.largeTitle)
-                            Text(mission.destinationCity ?? "loading")
+                            Text("\(mission.route.destination.city), \(mission.route.destination.state)")
                                 .font(.callout)
                                 //.foregroundStyle(Color.secondary)
                             
@@ -98,7 +97,7 @@ struct MissionDetailView: View {
                 .frame(height: 120)
                 .padding(.horizontal, 18)
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: 14)
                         .foregroundStyle(accentHighlight)
                         .opacity(0.25)
                 }
@@ -114,9 +113,9 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "waveform.path.ecg")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
-                            Text(mission.patientCare ?? "loading")
+                            Text(mission.patient.care ?? "loading")
                             
                             Spacer()
                             
@@ -124,9 +123,9 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "birthday.cake")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
-                            Text("\(mission.patientAge ?? "loading") yrs old")
+                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) years old" : "loading")
                             
                             Spacer()
                             
@@ -135,7 +134,7 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 14)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
@@ -153,32 +152,32 @@ struct MissionDetailView: View {
                         
                         HStack {
                             Image(systemName: "person.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Patient")
                             Spacer()
-                            Text("\(mission.patientWeight ?? "loading") lbs")
+                            Text(mission.patient.weight != nil ? "\(Int(mission.patient.weight!)) lbs" : "loading")
                         }.padding(.vertical, 3)
                         
                         
-                        if mission.passengerWeight != "N/A" {
+                        if mission.passenger.weight != nil {
                             HStack {
                                 Image(systemName: "person.2.fill")
-                                    .font(.title2)
+                                    .font(.title3)
                                     .frame(width: 35, alignment: .trailing)
                                 Text("Passenger")
                                 Spacer()
-                                Text("\(mission.passengerWeight ?? "loading") lbs")
+                                Text(mission.passenger.weight != nil ? "\(Int(mission.passenger.weight!)) lbs" : "loading")
                             }.padding(.vertical, 3)
                         }
                         
                         HStack{
                             Image(systemName: "suitcase.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Baggage")
                             Spacer()
-                            Text("\(mission.baggageWeight ?? "loading") lbs")
+                            Text(mission.baggage.weight != nil ? "\(Int(mission.baggage.weight!)) lbs" : "loading")
                         }
                         .padding(.vertical, 3)
                         .padding(.bottom, 3)
@@ -187,12 +186,11 @@ struct MissionDetailView: View {
                         
                         HStack{
                             Image(systemName: "scalemass.fill")
-                                .font(.title2)
+                                .font(.title3)
                                 .frame(width: 35, alignment: .trailing)
                             Text("Total Weight")
                             Spacer()
-                            Text("\(mission.totalWeightText) lbs")
-                            //Text("\(mission.baggageWeight ?? "loading") lbs")
+                            Text("\(mission.totalWeight) lbs")
                         }
                         .fontWeight(.bold)
                         .padding(.top, 4)
@@ -200,7 +198,7 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: 14)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
@@ -235,7 +233,7 @@ struct MissionDetailView: View {
                 HStack {
                     HStack {
                         Image(systemName: "globe")
-                        Text(mission.id ?? "loading")
+                        Text(mission.id)
                     }
                     .foregroundStyle(Color.secondary)
                 }
@@ -287,5 +285,5 @@ private struct ShareSheet: UIViewControllerRepresentable {
 
 
 #Preview {
-    MissionDetailView(mission: Mission.sampleMission)
+    MissionDetailView(mission: Mission.sampleMissionAvailable)
 }
