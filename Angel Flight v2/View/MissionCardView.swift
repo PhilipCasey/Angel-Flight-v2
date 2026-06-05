@@ -41,7 +41,7 @@ struct MissionCardView: View {
                     HStack {
                         VStack {
                             VStack {
-                                Text(mission.mission.dayOfWeek)
+                                Text(mission.mission.dayOfWeek ?? "")
                                     .font(.subheadline)
                                     .foregroundStyle(Color.secondary)
                                 

@@ -31,7 +31,7 @@ struct MissionDetailView: View {
                 HStack{
                     VStack(spacing: 2) {
                         
-                        Text(mission.mission.dayOfWeek)
+                        Text(mission.mission.dayOfWeek ?? "")
                             .font(.title2)
                             .foregroundStyle(Color.secondary)
                         

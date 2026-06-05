@@ -131,7 +131,7 @@ struct Patient: Codable {
 
 struct MissionInfo: Codable {
     let date: String
-    let dayOfWeek: String
+    let dayOfWeek: String?
     let departureTime: String?
     let completedDate: String?
     let completedDayOfWeek: String?

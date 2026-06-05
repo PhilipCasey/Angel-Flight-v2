@@ -31,6 +31,14 @@ struct MissionListViewAvailable: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
 
+            Text("Available Missions")
+                .font(.headline)
+                .foregroundStyle(.white.opacity(0.8))
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+            
             // Builds the list cardview
             FilteredListCardView(
                 missions: missionData.missions,

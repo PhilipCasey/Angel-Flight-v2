@@ -9,6 +9,11 @@ import SwiftUI
 
 
 struct MainView: View {
+    @StateObject private var missionData = Fetcher()
+
+    private var acceptedMissionCount: Int {
+        missionData.missions.filter { $0.status == .accepted }.count
+    }
 
     var body: some View {
         NavigationStack {
@@ -22,7 +27,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Accepted", systemImage: "paperplane.fill")
                     }
-                    .badge(3)
+                    .badge(acceptedMissionCount)
                 
                 LogbookListView()
                     .tabItem {
@@ -32,6 +37,9 @@ struct MainView: View {
                     .tabItem {
                         Label("Settings", systemImage: "gearshape.fill")
                     }
+            }
+            .onAppear {
+                missionData.fetcher()
             }
         }
     }

@@ -368,5 +368,81 @@
     "flightTotals": null,
     "expenses": null,
     "comments": null
+  },
+  {
+    "id": "26-0672-02",
+    "status": "accepted",
+    "patient": {
+      "name": null,
+      "care": "Cancer",
+      "age": 13,
+      "weight": 203.0
+    },
+    "mission": {
+      "date": "06-08-2026",
+      "dayOfWeek": "Monday",
+      "departureTime": "Lunch",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Bowling Green",
+        "state": "KY",
+        "airport": "BWG"
+      },
+      "destination": {
+        "city": "Atlanta",
+        "state": "GA",
+        "airport": "PDK"
+      }
+    },
+    "passenger": {
+      "weight": 196.0
+    },
+    "baggage": {
+      "weight": 40.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
+  },
+  {
+    "id": "26-0213-01",
+    "status": "available",
+    "patient": {
+      "name": null,
+      "care": "Transplant-Bowel",
+      "age": 19,
+      "weight": 109
+    },
+    "mission": {
+      "date": "On Call",
+      "dayOfWeek": null,
+      "departureTime": "Within 6 Hour Notice",
+      "completedDate": null,
+      "completedDayOfWeek": null
+    },
+    "route": {
+      "departure": {
+        "city": "Charleston",
+        "state": "SC",
+        "airport": "CHS"
+      },
+      "destination": {
+        "city": "Pittsburg",
+        "state": "PA",
+        "airport": "AGC"
+      }
+    },
+    "passenger": {
+      "weight": 209.0
+    },
+    "baggage": {
+      "weight": 30.0
+    },
+    "flightTotals": null,
+    "expenses": null,
+    "comments": null
   }
 ]

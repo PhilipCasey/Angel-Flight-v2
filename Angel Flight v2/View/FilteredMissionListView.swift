@@ -16,6 +16,7 @@ struct FilteredListCardView: View {
     }
     
     var body: some View {
+
         ForEach(filteredMissions) { mission in
                 MissionCardView(mission: mission)
                     .background(
