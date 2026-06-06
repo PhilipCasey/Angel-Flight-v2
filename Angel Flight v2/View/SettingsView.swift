@@ -25,23 +25,25 @@ struct SettingsView: View {
                 }
 
                 Form {
-                    Section("Flight Plans") {
-                        Toggle("Include Home Airport", isOn: $includeHomeAirport)
-
-                        TextField("Home Airport", text: $homeAirportCode)
-                            .textInputAutocapitalization(.characters)
-                            .autocorrectionDisabled()
-                            .disabled(!includeHomeAirport)
-                    }
-                    .listRowBackground(rowBackground)
-
                     Section {
+                        LabeledContent("Home Airport") {
+                            TextField("Airport Code", text: $homeAirportCode)
+                                .multilineTextAlignment(.trailing)
+                                .textInputAutocapitalization(.characters)
+                                .autocorrectionDisabled()
+                                .disabled(!includeHomeAirport)
+                        }
+
+                        Toggle("Add to Flight Plan", isOn: $includeHomeAirport)
+                    } header: {
+                    Text("Flight Plan")
+                    } footer: {
                         Text("When enabled, exported flight plans will start and end at your home airport.")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
                     }
+                    
                     .listRowBackground(rowBackground)
                 }
+                
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Settings")

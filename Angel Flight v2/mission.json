@@ -419,7 +419,7 @@
     "mission": {
       "date": "On Call",
       "dayOfWeek": null,
-      "departureTime": "Within 6 Hour Notice",
+      "departureTime": "6 Hours",
       "completedDate": null,
       "completedDayOfWeek": null
     },

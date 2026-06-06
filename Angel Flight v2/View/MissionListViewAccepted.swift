@@ -30,7 +30,7 @@ struct MissionListViewAccepted: View {
                 .listRowBackground(Color.clear)
                 .stretchy()
             
-            Text("Your Missions")
+            Text("My Missions")
                 .font(.headline)
                 .foregroundStyle(.white.opacity(0.8))
                 .frame(maxWidth: .infinity, alignment: .center)
