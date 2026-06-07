@@ -30,112 +30,75 @@ struct MissionDetailView: View {
 
             ScrollView{
                 VStack {
-                // Mission Details
-                HStack{
-                    VStack(spacing: 2) {
-                        
-                        Text(mission.mission.dayOfWeek ?? "")
-                            .font(.title2)
-                            .foregroundStyle(Color.secondary)
-                        
-                        Text(mission.mission.date)
-                            .font(.title)
-                        
-                        HStack {
-                            Text("Departing")
-                            Text(mission.mission.departureTime ?? "loading")
-                                .fontWeight(.bold)
-                        }
-                    }
-                }
-                .padding(.bottom)
-                
-                //Route Section
-                ZStack {
-                    VStack {
-                        HStack{
-                            VStack{
-                                Image(systemName: "airplane")
-                                    .font(.title)
+                    // Mission Details
+                    HStack{
+                        VStack(spacing: 2) {
+                            
+                            Text(mission.mission.dayOfWeek ?? "")
+                                .font(.title2)
+                                .foregroundStyle(Color.secondary)
+                            
+                            Text(mission.mission.date)
+                                .font(.title)
+                            
+                            HStack {
+                                Text("Departing")
+                                Text(mission.mission.departureTime ?? "loading")
+                                    .fontWeight(.bold)
                             }
                         }
                     }
+                    .padding(.bottom)
                     
-                    HStack {
-                        VStack{
-                            Text("Route")
-                            .font(.headline)
+                    //Route Section
+                    ZStack {
+                        VStack {
+                            HStack{
+                                VStack{
+                                    Image(systemName: "airplane")
+                                        .font(.title)
+                                }
+                            }
+                        }
+                        
+                        HStack {
+                            VStack{
+                                Text("Route")
+                                    .font(.headline)
                                 Spacer()
                             }
-                        .padding()
-                    }
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Departure")
-                                .font(.caption)
-                                .foregroundStyle(Color.secondary)
-                            
-                            Text(mission.route.departure.airport)
-                                .font(.largeTitle)
-                            
-                            Text("\(mission.route.departure.city), \(mission.route.departure.state)")
-                                .font(.callout)
+                            .padding()
+                        }
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Departure")
+                                    .font(.caption)
+                                    .foregroundStyle(Color.secondary)
+                                
+                                Text(mission.route.departure.airport)
+                                    .font(.largeTitle)
+                                
+                                Text("\(mission.route.departure.city), \(mission.route.departure.state)")
+                                    .font(.callout)
                                 //.foregroundStyle(Color.secondary)
-                            
-                        }
-                        Spacer()
-                        VStack(alignment: .trailing) {
-                            Text("Destination")
-                                .font(.caption)
-                                .foregroundStyle(Color.secondary)
-                            Text(mission.route.destination.airport)
-                                .font(.largeTitle)
-                            Text("\(mission.route.destination.city), \(mission.route.destination.state)")
-                                .font(.callout)
+                                
+                            }
+                            Spacer()
+                            VStack(alignment: .trailing) {
+                                Text("Destination")
+                                    .font(.caption)
+                                    .foregroundStyle(Color.secondary)
+                                Text(mission.route.destination.airport)
+                                    .font(.largeTitle)
+                                Text("\(mission.route.destination.city), \(mission.route.destination.state)")
+                                    .font(.callout)
                                 //.foregroundStyle(Color.secondary)
-                            
+                                
+                            }
                         }
                     }
-                }
-                .frame(height: 120)
-                .padding(.horizontal, 18)
-                .background {
-                    RoundedRectangle(cornerRadius: roundedCornersRadius)
-                        .foregroundStyle(accentHighlight)
-                        .opacity(0.25)
-                }
-                //.padding(.vertical, 8)
-                
-                // Patient Section
-                HStack {
-                    VStack{
-                        HStack {
-                            Text("Patient")
-                                .font(.headline)
-                        }
-                        
-                        HStack {
-                            Image(systemName: "waveform.path.ecg")
-                                .font(.title3)
-                                .frame(width: 35, alignment: .trailing)
-                            Text(mission.patient.care ?? "loading")
-                            
-                            Spacer()
-                            
-                        }.padding(.vertical, 3)
-                        
-                        HStack {
-                            Image(systemName: "birthday.cake")
-                                .font(.title3)
-                                .frame(width: 35, alignment: .trailing)
-                            Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) years old" : "loading")
-                            
-                            Spacer()
-                            
-                        }.padding(.vertical, 3)
-                        
-                    }
-                    .padding(18)
+                    .frame(height: 120)
+                    .padding(.horizontal, 18)
                     .background {
                         RoundedRectangle(cornerRadius: roundedCornersRadius)
                             .foregroundStyle(accentHighlight)
@@ -143,113 +106,169 @@ struct MissionDetailView: View {
                     }
                     //.padding(.vertical, 8)
                     
-                }
-                
-                // Payload Section
-                HStack {
-                    VStack{
-                        HStack {
-                            Text("Payload")
-                                .font(.headline)
-                        }
-                        
-                        HStack {
-                            Image(systemName: "person.fill")
-                                .font(.title3)
-                                .frame(width: 35, alignment: .trailing)
-                            Text("Patient")
-                            Spacer()
-                            Text(mission.patient.weight != nil ? "\(Int(mission.patient.weight!)) lbs" : "loading")
-                        }.padding(.vertical, 3)
-                        
-                        
-                        if mission.passenger.weight != nil {
+                    // Patient Section
+                    HStack {
+                        VStack{
                             HStack {
-                                Image(systemName: "person.2.fill")
+                                Text("Patient")
+                                    .font(.headline)
+                            }
+                            
+                            HStack {
+                                Image(systemName: "waveform.path.ecg")
                                     .font(.title3)
                                     .frame(width: 35, alignment: .trailing)
-                                Text("Passenger")
+                                Text(mission.patient.care ?? "loading")
+                                
                                 Spacer()
-                                Text(mission.passenger.weight != nil ? "\(Int(mission.passenger.weight!)) lbs" : "loading")
+                                
                             }.padding(.vertical, 3)
+                            
+                            HStack {
+                                Image(systemName: "birthday.cake")
+                                    .font(.title3)
+                                    .frame(width: 35, alignment: .trailing)
+                                Text(mission.patient.age != nil ? "\(Int(mission.patient.age!)) years old" : "loading")
+                                
+                                Spacer()
+                                
+                            }.padding(.vertical, 3)
+                            
                         }
-                        
-                        HStack{
-                            Image(systemName: "suitcase.fill")
-                                .font(.title3)
-                                .frame(width: 35, alignment: .trailing)
-                            Text("Baggage")
-                            Spacer()
-                            Text(mission.baggage.weight != nil ? "\(Int(mission.baggage.weight!)) lbs" : "loading")
+                        .padding(18)
+                        .background {
+                            RoundedRectangle(cornerRadius: roundedCornersRadius)
+                                .foregroundStyle(accentHighlight)
+                                .opacity(0.25)
                         }
-                        .padding(.vertical, 3)
-                        .padding(.bottom, 3)
-                        
-                        Divider()
-                        
-                        HStack{
-                            Image(systemName: "scalemass.fill")
-                                .font(.title3)
-                                .frame(width: 35, alignment: .trailing)
-                            Text("Total Weight")
-                            Spacer()
-                            Text("\(mission.totalWeight) lbs")
-                        }
-                        .fontWeight(.bold)
-                        .padding(.top, 4)
+                        //.padding(.vertical, 8)
                         
                     }
-                    .padding(18)
-                    .background {
-                        RoundedRectangle(cornerRadius: roundedCornersRadius)
-                            .foregroundStyle(accentHighlight)
-                            .opacity(0.25)
-                    }
-                    //.padding(.bottom, 4)
                     
-                }
-                
-                //Buttons
-                VStack {
-                    Button {
-                        openRouteInEFB()
-                    } label: {
-                        Label("Open Route in EFB", systemImage: "square.and.arrow.up")
-                            .frame(maxWidth: 320)
+                    // Payload Section
+                    HStack {
+                        VStack{
+                            HStack {
+                                Text("Payload")
+                                    .font(.headline)
+                            }
+                            
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .font(.title3)
+                                    .frame(width: 35, alignment: .trailing)
+                                Text("Patient")
+                                Spacer()
+                                Text(mission.patient.weight != nil ? "\(Int(mission.patient.weight!)) lbs" : "loading")
+                            }.padding(.vertical, 3)
+                            
+                            
+                            if mission.passenger.weight != nil {
+                                HStack {
+                                    Image(systemName: "person.2.fill")
+                                        .font(.title3)
+                                        .frame(width: 35, alignment: .trailing)
+                                    Text("Passenger")
+                                    Spacer()
+                                    Text(mission.passenger.weight != nil ? "\(Int(mission.passenger.weight!)) lbs" : "loading")
+                                }.padding(.vertical, 3)
+                            }
+                            
+                            HStack{
+                                Image(systemName: "suitcase.fill")
+                                    .font(.title3)
+                                    .frame(width: 35, alignment: .trailing)
+                                Text("Baggage")
+                                Spacer()
+                                Text(mission.baggage.weight != nil ? "\(Int(mission.baggage.weight!)) lbs" : "loading")
+                            }
+                            .padding(.vertical, 3)
+                            .padding(.bottom, 3)
+                            
+                            Divider()
+                            
+                            HStack{
+                                Image(systemName: "scalemass.fill")
+                                    .font(.title3)
+                                    .frame(width: 35, alignment: .trailing)
+                                Text("Total Weight")
+                                Spacer()
+                                Text("\(mission.totalWeight) lbs")
+                            }
+                            .fontWeight(.bold)
+                            .padding(.top, 4)
+                            
+                        }
+                        .padding(18)
+                        .background {
+                            RoundedRectangle(cornerRadius: roundedCornersRadius)
+                                .foregroundStyle(accentHighlight)
+                                .opacity(0.25)
+                        }
+                        //.padding(.bottom, 4)
+                        
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
                     
-                    if mission.status != .accepted {
+                    //Buttons
+                    VStack {
+                        // EFB Button
+                        Button {
+                            openRouteInEFB()
+                        } label: {
+                            Label("Open Route in EFB", systemImage: "square.and.arrow.up")
+                                .frame(maxWidth: 320)
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        
+                        //Accept Button
+                        if mission.status == .available {
+                            Button {
+                                showingConfirmation.toggle()
+                            } label: {
+                                Label("Accept Mission", systemImage: "plus.circle.fill")
+                                    .frame(maxWidth: 320)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
+                            .confirmationDialog("Accept Confirmation", isPresented: $showingConfirmation){
+                                Button("Yes") { print("Accepted Mission \(mission.id)") }
+                                Button("Cancel") { print("User Cancelled") }
+                                
+                            } message: {
+                                Text("Confirm you want to accept this mission?")
+                            }
+                        }
+                    
+                    
+                    // Mission ID
+                        HStack {
+                            Image(systemName: "globe")
+                            Text(mission.id)
+                        }
+                        .foregroundStyle(Color.secondary)
+                    .padding()
+                        
+                    // Cancel Button
+                    if mission.status == .accepted {
                         Button {
                             showingConfirmation.toggle()
                         } label: {
-                            Label("Accept Mission", systemImage: "plus.circle.fill")
-                                .frame(maxWidth: 320)
+                            Label("Cancel Mission", systemImage: "x.circle")
+                                //.frame(maxWidth: 145)
+                                .foregroundStyle(Color.red)
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bordered)
                         .controlSize(.large)
-                        .confirmationDialog("Accept Confirmation", isPresented: $showingConfirmation){
-                            Button("Yes") { print("Accepted Mission \(mission.id)") }
-                            Button("Cancel") {print("User Cancelled")  }
-                            
+                        .confirmationDialog("Cancel Mission", isPresented: $showingConfirmation){
+                            Button("Yes") { print("Cancel Mission \(mission.id)") }
+                            Button("No") { }
                         } message: {
-                            Text("Confirm you want to accept this mission?")
+                            Text("Are you sure you want to cancel this mission?")
                         }
                     }
+                    
                 }
-                
-                // Mission ID
-                HStack {
-                    HStack {
-                        Image(systemName: "globe")
-                        Text(mission.id)
-                    }
-                    .foregroundStyle(Color.secondary)
-                }
-                .padding()
-                
-                
             }
             
                 .padding(14)
@@ -295,5 +314,5 @@ private struct ShareSheet: UIViewControllerRepresentable {
 
 
 #Preview {
-    MissionDetailView(mission: Mission.sampleMissionAvailable)
+    MissionDetailView(mission: Mission.sampleMissionAccepted)
 }

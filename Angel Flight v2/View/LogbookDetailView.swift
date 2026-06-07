@@ -86,7 +86,7 @@ struct LogbookDetailView: View {
     }
 
     private func detailSection<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 13) {
             Text(title)
                 .font(.headline)
 
@@ -95,7 +95,7 @@ struct LogbookDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
         .background {
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(accentHighlight)
                 .opacity(0.25)
         }

@@ -74,6 +74,45 @@ struct Mission: Identifiable, Codable {
         comments: nil
     )
     
+    // Sample Mission Data for Available Missions
+    static let sampleMissionAccepted = Mission(
+        id: "25-0625-01",
+        status: .accepted,
+        patient: Patient.init(
+            name: nil,
+            care: "Transplant-Heart",
+            age: 85,
+            weight: 230,
+        ),
+        mission: MissionInfo.init(
+            date: "07-28-2025",
+            dayOfWeek: "Monday",
+            departureTime: "8:00 am",
+            completedDate: nil,
+            completedDayOfWeek: nil
+        ),
+        route: Route.init(
+            departure: AirportLocation.init(
+                city: "Savannah",
+                state: "GA",
+                airport: "SAV"),
+            destination: AirportLocation.init(
+                city: "Atlanta",
+                state: "GA",
+                airport: "PDK")
+        ),
+        passenger: Passenger.init(
+            weight: 146,
+        ),
+        baggage: Baggage.init(
+            weight: 25
+        ),
+        flightTotals: nil,
+        expenses: nil,
+        comments: nil
+    )
+    
+    
     // Sample Mission Data for Completed Missions
     static let sampleMissionCompleted = Mission(
         id: "23-0501-01",
