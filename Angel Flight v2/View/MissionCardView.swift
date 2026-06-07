@@ -11,7 +11,8 @@ struct MissionCardView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     //@StateObject var missionData = Fetcher()
     let mission: Mission
-
+    let roundedCornersRadius: CGFloat = 20
+    
     private var shouldShowCondensedWeights: Bool {
         dynamicTypeSize > .xxLarge
     }
@@ -105,9 +106,9 @@ struct MissionCardView: View {
                 }
             }
             //.frame(height: 120)
-            .padding(13)
+            .padding(15)
             .background {
-                RoundedRectangle(cornerRadius: 14)
+                RoundedRectangle(cornerRadius: roundedCornersRadius)
                     .foregroundStyle(accentHighlight)
                     .opacity(0.25)
             }
@@ -169,11 +170,11 @@ struct MissionCardView: View {
         .padding(14)
         .background {
             if colorScheme == .light {
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: roundedCornersRadius)
                     .fill(Color.viewBackground)
             }
             if colorScheme == .dark {
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: roundedCornersRadius)
                     .fill(Color.viewBackground)
             }
         }

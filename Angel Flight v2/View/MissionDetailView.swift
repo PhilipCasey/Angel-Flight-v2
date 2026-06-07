@@ -13,6 +13,9 @@ struct MissionDetailView: View {
     @State private var sharedFile: SharedFile?
     @State private var errorMessage = ""
     @State private var isShowingError = false
+    @State private var showingConfirmation = false // accept mission confirmation
+    let roundedCornersRadius: CGFloat = 20
+
     
     var body: some View {
         ZStack {
@@ -97,7 +100,7 @@ struct MissionDetailView: View {
                 .frame(height: 120)
                 .padding(.horizontal, 18)
                 .background {
-                    RoundedRectangle(cornerRadius: 14)
+                    RoundedRectangle(cornerRadius: roundedCornersRadius)
                         .foregroundStyle(accentHighlight)
                         .opacity(0.25)
                 }
@@ -134,7 +137,7 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: roundedCornersRadius)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
@@ -198,35 +201,42 @@ struct MissionDetailView: View {
                     }
                     .padding(18)
                     .background {
-                        RoundedRectangle(cornerRadius: 14)
+                        RoundedRectangle(cornerRadius: roundedCornersRadius)
                             .foregroundStyle(accentHighlight)
                             .opacity(0.25)
                     }
-                    .padding(.bottom, 8)
+                    //.padding(.bottom, 4)
                     
                 }
                 
                 //Buttons
-                HStack {
+                VStack {
                     Button {
                         openRouteInEFB()
                     } label: {
                         Label("Open Route in EFB", systemImage: "square.and.arrow.up")
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: 320)
                     }
                     .buttonStyle(.bordered)
                     .controlSize(.large)
-                }
-                
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Label("Accept Mission", systemImage: "plus.circle.fill")
-                            .frame(maxWidth: .infinity)
+                    
+                    if mission.status != .accepted {
+                        Button {
+                            showingConfirmation.toggle()
+                        } label: {
+                            Label("Accept Mission", systemImage: "plus.circle.fill")
+                                .frame(maxWidth: 320)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .confirmationDialog("Accept Confirmation", isPresented: $showingConfirmation){
+                            Button("Yes") { print("Accepted Mission \(mission.id)") }
+                            Button("Cancel") {print("User Cancelled")  }
+                            
+                        } message: {
+                            Text("Confirm you want to accept this mission?")
+                        }
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
                 }
                 
                 // Mission ID

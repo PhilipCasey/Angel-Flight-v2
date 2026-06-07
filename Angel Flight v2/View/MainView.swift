@@ -20,7 +20,7 @@ struct MainView: View {
             TabView {
                 MissionListViewAvailable()
                     .tabItem() {
-                        Label("Missions", systemImage: "globe")
+                        Label("Missions", systemImage: "waveform.path.ecg")
                     }
                     .tag(0)
                 MissionListViewAccepted()
