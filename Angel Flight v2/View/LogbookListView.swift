@@ -9,8 +9,22 @@ import SwiftUI
 import Foundation
 
 struct LogbookListView: View {
+    @StateObject private var missionData = Fetcher()
+
+    var body: some View {
+        LogbookListContent(entries: missionData.logbookEntries) {
+            if missionData.logbookEntries.isEmpty {
+                missionData.fetchMissionLog()
+            }
+        }
+    }
+}
+
+private struct LogbookListContent: View {
     @Environment(\.colorScheme) private var colorScheme
-    @EnvironmentObject private var missionData: Fetcher
+
+    let entries: [LogbookEntry]
+    let fetchEntriesIfNeeded: () -> Void
 
     private var entrySummaries: [LogbookSummary] {
         [
@@ -40,7 +54,8 @@ struct LogbookListView: View {
                         NavigationLink(
                             destination: LogbookEntriesView(
                                 title: summary.title,
-                                filter: summary.filter
+                                filter: summary.filter,
+                                entries: entries
                             )
                         ) {
                             LogbookSummaryRow(summary: summary)
@@ -55,11 +70,7 @@ struct LogbookListView: View {
         }
         .navigationTitle("Logbook")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            if missionData.logbookEntries.isEmpty {
-                missionData.fetchMissionLog()
-            }
-        }
+        .onAppear(perform: fetchEntriesIfNeeded)
     }
 
     private var rowBackground: Color {
@@ -67,7 +78,7 @@ struct LogbookListView: View {
     }
 
     private func totalHoursText(for filter: LogbookFilter) -> String {
-        let total = logbookEntries(from: missionData.logbookEntries, matching: filter)
+        let total = logbookEntries(from: entries, matching: filter)
             .compactMap { entry in
                 Double(entry.totalHoursFlown ?? "")
             }
@@ -116,11 +127,11 @@ private enum LogbookFilter: Hashable {
 }
 
 private struct LogbookEntriesView: View {
-    @EnvironmentObject private var missionData: Fetcher
     @Environment(\.colorScheme) private var colorScheme
 
     let title: String
     let filter: LogbookFilter
+    let entries: [LogbookEntry]
 
     var body: some View {
         ZStack {
@@ -172,11 +183,6 @@ private struct LogbookEntriesView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            if missionData.logbookEntries.isEmpty {
-                missionData.fetchMissionLog()
-            }
-        }
     }
 
     private var entrySummaryCard: some View {
@@ -196,7 +202,7 @@ private struct LogbookEntriesView: View {
     }
 
     private var filteredEntries: [LogbookEntry] {
-        logbookEntries(from: missionData.logbookEntries, matching: filter)
+        logbookEntries(from: entries, matching: filter)
     }
 
     private var groupedEntries: [LogbookSection] {
@@ -307,10 +313,30 @@ let shortLogbookDateFormatter: DateFormatter = {
 
 #Preview {
     NavigationStack {
-        LogbookListView()
-            .environmentObject(Fetcher())
+        LogbookListContent(entries: previewLogbookEntries) { }
     }
 }
+
+private let previewLogbookEntries = [
+    LogbookEntry(
+        id: "25-0625-01",
+        patientName: "Lorilee Smith",
+        missionDate: "April 13, 2026",
+        missionDayOfWeek: "Tuesday",
+        completionDate: "April 13, 2026",
+        completionDayOfWeek: "Tuesday",
+        departureCity: "Lawrenceville, GA",
+        departureAirport: "LZU",
+        destinationCity: "Walterboro, SC",
+        destinationAirport: "RBW",
+        totalHoursFlown: "4.5",
+        totalMilesFlown: "416.0",
+        hourlyOperatingCosts: "118.00",
+        additionalExpenses: "0.00",
+        expenseDescription: "n/a",
+        additionalComments: "n/a"
+    )
+]
 
 private func logbookEntries(from entries: [LogbookEntry], matching filter: LogbookFilter) -> [LogbookEntry] {
     let entriesWithDates = entries.compactMap { entry -> (entry: LogbookEntry, date: Date)? in
