@@ -39,38 +39,55 @@ private struct LogbookListContent: View {
 
     var body: some View {
         ZStack {
-            if colorScheme == .dark {
-                Rectangle()
-                    .fill(Gradient(colors: gradientColors))
-                    .ignoresSafeArea()
-            } else {
-                Color(.systemGroupedBackground)
-                    .ignoresSafeArea()
-            }
-
-            List {
-                Section("Entries") {
-                    ForEach(entrySummaries) { summary in
-                        NavigationLink(
-                            destination: LogbookEntriesView(
-                                title: summary.title,
-                                filter: summary.filter,
-                                entries: entries
-                            )
-                        ) {
-                            LogbookSummaryRow(summary: summary)
+            
+            ZStack{
+                List {
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 75)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, 36)
+                        .padding(.bottom, 7)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                        .stretchy()
+                    
+                    Text("Completed Mission Logbook")
+                        .font(.headline)
+                        .foregroundStyle(.white.opacity(0.8))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+    
+                    Section("Entries") {
+                        ForEach(entrySummaries) { summary in
+                            NavigationLink(
+                                destination: LogbookEntriesView(
+                                    title: summary.title,
+                                    filter: summary.filter,
+                                    entries: entries
+                                )
+                            ) {
+                                LogbookSummaryRow(summary: summary)
+                            }
+                            .listRowInsets(EdgeInsets(top: 0, leading: 14, bottom: 0, trailing: 14))
+                            .listRowBackground(Color.viewBackground)
                         }
-                        .listRowInsets(EdgeInsets(top: 0, leading: 14, bottom: 0, trailing: 14))
-                        .listRowBackground(rowBackground)
                     }
+                    .padding(6)
                 }
+                .listStyle(.grouped)
+                .scrollContentBackground(.hidden)
+                .background(Gradient(colors: gradientColors))
+                
             }
-            .listStyle(.insetGrouped)
-            .scrollContentBackground(.hidden)
+            //.navigationTitle("Logbook")
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear(perform: fetchEntriesIfNeeded)
         }
-        .navigationTitle("Logbook")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear(perform: fetchEntriesIfNeeded)
     }
 
     private var rowBackground: Color {
@@ -103,6 +120,7 @@ private struct LogbookSummaryRow: View {
                 .foregroundStyle(.secondary)
         }
         .padding(.vertical, 10)
+        
     }
 }
 
@@ -180,6 +198,7 @@ private struct LogbookEntriesView: View {
             }
             .padding(14)
             .padding(.horizontal, 5)
+            
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
@@ -187,18 +206,19 @@ private struct LogbookEntriesView: View {
 
     private var entrySummaryCard: some View {
         HStack {
-            Text("\(filteredEntries.count) Entries")
+            
+            if filteredEntries.count == 1 {
+                Text("\(filteredEntries.count) Entry")
+            } else {
+                Text("\(filteredEntries.count) Entries")
+            }
+            
             Spacer()
             Text("\(totalHours) Total Time")
         }
-        .font(.subheadline.weight(.semibold))
+        .font(.headline)
         .foregroundStyle(.secondary)
         .padding(18)
-        .background {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundStyle(accentHighlight)
-                .opacity(0.25)
-        }
     }
 
     private var filteredEntries: [LogbookEntry] {
@@ -231,22 +251,25 @@ private struct LogbookEntriesView: View {
     }
 }
 
+
+// Future Cardview
 private struct LogbookEntryRow: View {
     let entry: LogbookEntry
 
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
             VStack(alignment: .leading, spacing: 6) {
-                Text("\(entry.departureAirport ?? "—") - \(entry.destinationAirport ?? "—")")
-                    .font(.headline)
-                    .foregroundStyle(.primary)
 
                 Text(entry.patientName ?? entry.id)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                
+                Text("\(entry.departureAirport ?? "—") - \(entry.destinationAirport ?? "—")")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
 
                 Text(entry.id)
-                    .font(.footnote)
+                    .font(.subheadline)
                     .foregroundStyle(.tertiary)
             }
 
@@ -255,7 +278,6 @@ private struct LogbookEntryRow: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text(shortLogbookDate(for: entry))
                     .font(.subheadline)
-                    .foregroundStyle(.blue)
 
                 Text("\(entry.totalHoursFlown ?? "0.0") Total")
                     .font(.subheadline.weight(.semibold))
@@ -269,7 +291,7 @@ private struct LogbookEntryRow: View {
         }
         .padding(18)
         .background {
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(accentHighlight)
                 .opacity(0.25)
         }
