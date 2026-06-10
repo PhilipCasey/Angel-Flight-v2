@@ -12,14 +12,16 @@ let accentHighlight: Color = .accentHighlight
 
 struct MissionListViewAvailable: View {
     @StateObject var missionData = Fetcher()
-
+    @State private var searchText = ""
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] // NavigationTitle Color
     }
 
     var body: some View {
         List {
-            Image("logo")
+            /*
+             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 75)
@@ -38,11 +40,12 @@ struct MissionListViewAvailable: View {
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
-            
+            */
             // Builds the list cardview
             FilteredListCardView(
                 missions: missionData.missions,
-                status: .available
+                status: .available,
+                searchText: searchText
             )
             
             Text("Thank you for serving!")
@@ -56,6 +59,7 @@ struct MissionListViewAvailable: View {
         .scrollContentBackground(.hidden)
         .background(Gradient(colors: gradientColors))
         .navigationTitle("Missions")
+        .searchable(text: $searchText, prompt: "Search missions")
         .onAppear {
             missionData.fetcher()
         }

@@ -16,31 +16,37 @@ struct MainView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            TabView {
+        TabView {
+            NavigationStack {
                 MissionListViewAvailable()
-                    .tabItem() {
-                        Label("Missions", systemImage: "waveform.path.ecg")
-                    }
-                    .tag(0)
+            }
+            .tabItem() {
+                Label("Missions", systemImage: "waveform.path.ecg")
+            }
+            .tag(0)
+            
+            NavigationStack {
                 MissionListViewAccepted()
-                    .tabItem {
-                        Label("Accepted", systemImage: "paperplane.fill")
-                    }
-                    .badge(acceptedMissionCount)
-                
+            }
+            .tabItem {
+                Label("Accepted", systemImage: "paperplane.fill")
+            }
+            .badge(acceptedMissionCount)
+            
+            NavigationStack {
                 LogbookListView()
-                    .tabItem {
-                        Label("Logbook", systemImage: "book")
-                    }
-                SettingsView()
-                    .tabItem {
-                        Label("Settings", systemImage: "gearshape.fill")
-                    }
             }
-            .onAppear {
-                missionData.fetcher()
+            .tabItem {
+                Label("Logbook", systemImage: "book")
             }
+            
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
+        }
+        .onAppear {
+            missionData.fetcher()
         }
     }
 }

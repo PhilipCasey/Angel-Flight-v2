@@ -19,6 +19,46 @@ struct Mission: Identifiable, Codable {
     let expenses: Expenses?
     let comments: String?
     
+    var searchableFields: [String] {
+        let fields: [String?] = [
+            id,
+            status.rawValue,
+            patient.name,
+            patient.care,
+            patient.age.map { String($0) },
+            patient.weight.map { String($0) },
+            mission.date,
+            mission.dayOfWeek,
+            mission.departureTime,
+            mission.completedDate,
+            mission.completedDayOfWeek,
+            route.departure.city,
+            route.departure.state,
+            route.departure.airport,
+            route.destination.city,
+            route.destination.state,
+            route.destination.airport,
+            passenger.weight.map { String($0) },
+            baggage.weight.map { String($0) },
+            flightTotals?.hoursFlown.description,
+            flightTotals?.milesFlown.description,
+            expenses?.hourlyOperatingCost.description,
+            expenses?.additionalExpenses.description,
+            expenses?.description,
+            comments,
+            totalWeight
+        ]
+        return fields.compactMap { $0 }
+    }
+    
+    func matchesSearch(_ searchText: String) -> Bool {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedSearchText.isEmpty else { return true }
+        return searchableFields.contains {
+            $0.localizedCaseInsensitiveContains(trimmedSearchText)
+        }
+    }
+    
     var totalWeight: String {
         let weights = [
             patient.weight,

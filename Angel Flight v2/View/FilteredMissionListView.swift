@@ -10,9 +10,18 @@ import SwiftUI
 struct FilteredListCardView: View {
     let missions: [Mission]
     let status: MissionStatus
+    let searchText: String
+    
+    init(missions: [Mission], status: MissionStatus, searchText: String = "") {
+        self.missions = missions
+        self.status = status
+        self.searchText = searchText
+    }
     
     var filteredMissions: [Mission] {
-        missions.filter { $0.status == status }
+        missions.filter { mission in
+            mission.status == status && mission.matchesSearch(searchText)
+        }
     }
     
     var body: some View {

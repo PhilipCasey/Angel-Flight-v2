@@ -18,7 +18,8 @@ struct MissionListViewAccepted: View {
 
     var body: some View {
         List {
-            Image("logo")
+            /*
+             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 75)
@@ -37,7 +38,7 @@ struct MissionListViewAccepted: View {
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.clear)
-
+*/
             // Builds the list cardview
             FilteredListCardView(
                 missions: missionData.missions,
