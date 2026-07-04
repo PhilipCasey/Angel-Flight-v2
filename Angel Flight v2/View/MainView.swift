@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct MainView: View {
     @StateObject private var missionData = Fetcher()
 

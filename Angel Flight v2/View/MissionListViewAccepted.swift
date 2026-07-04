@@ -55,7 +55,7 @@ struct MissionListViewAccepted: View {
         .listStyle(.grouped)
         .scrollContentBackground(.hidden)
         .background(Gradient(colors: gradientColors))
-        .navigationTitle("Missions")
+        .navigationTitle("Accepted Missions")
         .onAppear {
             missionData.fetcher()
         }

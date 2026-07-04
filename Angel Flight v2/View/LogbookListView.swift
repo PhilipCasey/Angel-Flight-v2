@@ -42,7 +42,7 @@ private struct LogbookListContent: View {
             
             ZStack{
                 List {
-                    Image("logo")
+                    /* Image("logo")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 75)
@@ -53,14 +53,7 @@ private struct LogbookListContent: View {
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                         .stretchy()
-                    
-                    Text("Completed Mission Logbook")
-                        .font(.headline)
-                        .foregroundStyle(.white.opacity(0.8))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
+                    */
     
                     Section("Entries") {
                         ForEach(entrySummaries) { summary in
@@ -84,8 +77,8 @@ private struct LogbookListContent: View {
                 .background(Gradient(colors: gradientColors))
                 
             }
-            //.navigationTitle("Logbook")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Logbook")
+            //.navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: fetchEntriesIfNeeded)
         }
     }
